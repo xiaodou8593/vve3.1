@@ -1,0 +1,47 @@
+#vve:_consts
+# 设置运行常量
+
+# 空气摩擦系数
+scoreboard players set vve_air_friction int 10000
+
+# 流体摩擦系数
+scoreboard players set vve_liquid_friction int 8500
+# 流体浮力冲量系数
+scoreboard players set vve_liquid_c int 8000
+
+# 水系数
+scoreboard players set vve_water_friction int 8500
+scoreboard players set vve_water_c int 8000
+
+# 岩浆系数
+scoreboard players set vve_lava_friction int 6500
+scoreboard players set vve_lava_c int 24000
+
+# 实心介质摩擦系数
+scoreboard players set vve_grab_friction int 8500
+scoreboard players set vve_solid_friction int 8500
+scoreboard players set vve_grab_friction_tan int 3500
+scoreboard players set vve_solid_friction_tan int 3500
+# 使用函数y=1/(x+1)对比例x进行映射后得到的值
+scoreboard players set vve_solid_bounce_inv int 6896
+
+# 不同方块介质材质参数
+function vve:material/_consts
+
+# 附着层深度
+scoreboard players set grab_depth_max int 500
+# 位移至深度
+scoreboard players set grab_depth_mid int 125
+# 附着层过滤速度
+scoreboard players set grab_layer_v int 1500
+# 姿态修正速度
+scoreboard players set grab_layer_regular_v int 300
+
+# 重力加速度
+scoreboard players set vve_gravity int 300
+
+# 实心介质最大深度
+scoreboard players set vve_solid_r int 30000
+
+# 斜面方块附着层厚度
+scoreboard players set vve_slope_block_d int -1000

@@ -1,0 +1,13 @@
+{
+	"values":[
+		"minecraft:short_grass",
+		"minecraft:tall_grass",
+		"minecraft:water",
+		"minecraft:lava",
+		"minecraft:light",
+		"#minecraft:air",
+		"#minecraft:buttons",
+		"#minecraft:flowers",
+		"#minecraft:replaceable"
+	]
+}
