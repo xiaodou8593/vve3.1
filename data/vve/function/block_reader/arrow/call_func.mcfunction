@@ -2,7 +2,7 @@
 # vve:block_reader/main调用
 
 data modify storage vve:io result set from entity @s inBlockState
-execute if data storage vve:io result{Name:"minecraft:barrier"} run return run kill @s
+execute if data storage vve:io {result:"minecraft:barrier"} run return run kill @s
 execute store result storage math:io xyz[0] double 1 run scoreboard players get @s x
 execute store result storage math:io xyz[1] double 1 run scoreboard players get @s y
 execute store result storage math:io xyz[2] double 1 run scoreboard players get @s z

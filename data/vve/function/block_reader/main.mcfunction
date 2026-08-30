@@ -9,7 +9,7 @@ execute unless data storage vve:io block_reader_tasks[0] if score temp_cnt int m
 execute if score temp_cnt int matches ..127 if data storage vve:io block_reader_tasks[0] as 0-0-0-0-0 run function vve:block_reader/start_task_loop
 
 # 箭矢调用回调函数
-execute as @e[tag=vve_block_reader_arrow,nbt={inBlockState:{}}] run function vve:block_reader/arrow/call_func with entity @s data
+execute as @e[tag=vve_block_reader_arrow] if data entity @s inBlockState run function vve:block_reader/arrow/call_func with entity @s data
 
 # 回收编号
 execute store result score loop int run data get storage vve:io block_reader_work
