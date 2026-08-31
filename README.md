@@ -1,11 +1,11 @@
-# VVE 3.0 使用文档
+# VVE 3.1 使用文档
 
 VVE（Vanilla Vehicle Engine）是面向原版 Minecraft 的高性能物理引擎数据包。
 
 | 项目 | 信息 |
 | --- | --- |
-| 适用版本 | Minecraft 1.21.5 ~ 26.2 |
-| 前置依赖 | `math3.1`、`math3.1_lalib`、`math3.1_gelib` |
+| 适用版本 | Minecraft 26.3 ~ ? |
+| 前置依赖 | `math3.2`、`math3.2_lalib`、`math3.2_gelib` |
 | 命名空间 | `vve`、`vve_examples`、`module_control` |
 
 **快速导航：** [基本介绍](#1-基本介绍) · [安装方法](#2-安装方法) · [快速开始](#3-快速开始) · [常用接口](#4-常用接口介绍) · [文档导航](#5-文档导航) · [项目历史](#6-项目历史)
@@ -47,10 +47,16 @@ VVE 3 实现了对性能的精准把控，最多可以支持上百个物体实�
 
 | 类型 | 项目 | 版本要求 | 说明 |
 | --- | --- | --- | --- |
-| 前置数据包 | [数学库](https://github.com/xiaodou8593/math3.1) | 3.1.4+ | 必需 |
-| 前置数据包 | [线性代数库](https://github.com/xiaodou8593/math3.1_lalib) | 3.1.4+ | 必需 |
-| 前置数据包 | [图形库](https://github.com/xiaodou8593/math3.1_gelib) | 3.1.4+ | 可选，用于可视化测试 |
-| 模块构建器 | [MOT](https://github.com/xiaodou8593/mot_2.0) | 2.0.0+ | 必需 |
+| 前置数据包 | [数学库](https://github.com/xiaodou8593/math3.2) | 3.2.0+ | 必需 |
+| 前置数据包 | [线性代数库](https://github.com/xiaodou8593/math3.2_lalib) | 3.2.0+ | 必需 |
+| 前置数据包 | [图形库](https://github.com/xiaodou8593/math3.2_gelib) | 3.2.0+ | 可选，用于可视化测试 |
+| 模块构建器 | [MOT](https://github.com/xiaodou8593/mot_2.1) | 2.1.7+ | 必需 |
+
+命令行安装MOT(需要python)：
+
+```
+pip3 install mcf-mot
+```
 
 请手动初始化所有数据包：
 
@@ -100,22 +106,26 @@ function math:particles/_load_1214
 
 ### 3.1 创建项目
 
-1. 运行 `mot2.0.ahk`，在 `datapacks` 目录下按 <kbd>Ctrl</kbd> + <kbd>P</kbd>，快捷创建一个数据包。
+1. 在 `datapacks` 目录下创建一个数据包。
 
    - 数据包名称：`vve_test`
    - 命名空间：`vve_test`
 
-2. 模块目录（`data/vve_test/function` 文件夹）自动弹出后，按 <kbd>Ctrl</kbd> + <kbd>M</kbd> 运行 MOT 记忆栈，输入以下命令：
+2. 模块目录（`data/vve_test/function` 文件夹）下，按 <kbd>Shift</kbd> + <kbd>右键</kbd> 运行powershell或黑色终端，输入以下命令：
 
 ```text
-push vve_block_1.0
+mot
 ```
 
-3. 使窗口焦点回到模块目录，按 <kbd>Ctrl</kbd> + <kbd>O</kbd> 创建对象格式文档。
+3. 推送模板并创建对象格式文档
 
-   > **注意：** 必须先运行 `push` 命令，才能在对象格式文档中加载预设字段。
+```
+mot
+push vve_block_1.0
+mcfo
+```
 
-4. 回到 MOT 记忆栈，依次运行以下命令构建模块：
+4. 依次运行以下命令构建模块：
 
 ```text
 run

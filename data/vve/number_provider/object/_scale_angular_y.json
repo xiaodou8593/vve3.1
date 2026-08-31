@@ -1,0 +1,23 @@
+{
+	"type":"product",
+	"operands":[
+		{
+			"type":"score",
+			"target":{
+				"type":"fixed",
+				"name":"angular_y"
+			},
+			"score":"int",
+			"scale":0.000001
+		},
+		{
+			"type":"score",
+			"target":{
+				"type":"fixed",
+				"name":"inp"
+			},
+			"score":"int",
+			"scale":0.0001
+		}
+	]
+}
