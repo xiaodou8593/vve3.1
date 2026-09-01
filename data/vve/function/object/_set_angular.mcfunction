@@ -5,7 +5,7 @@
 # 传入世界实体为执行者
 
 # 单位化当前四元数
-function math:quat/_norm_sqrt
+function math:quat/_norm_np
 
 # 计算角速度转轴和模长
 execute store result storage math:io xyz[0] double 0.0001 run scoreboard players get angular_x int
