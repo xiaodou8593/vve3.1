@@ -1,23 +1,29 @@
 {
-	"type":"mul",
-	"inputs":[
+	"type": "mul",
+	"inputs": [
 		{
-			"type":"score",
-			"target":{
-				"type":"fixed",
-				"name":"angular_len"
-			},
-			"score":"int",
-			"scale":0.000001
+			"type": "from_int",
+			"input": {
+				"type": "score",
+				"target": {
+					"type": "fixed",
+					"name": "angular_len"
+				},
+				"score": "int",
+				"scale": 1e-06
+			}
 		},
 		{
-			"type":"score",
-			"target":{
-				"type":"fixed",
-				"name":"inp"
-			},
-			"score":"int",
-			"scale":0.0001
+			"type": "from_int",
+			"input": {
+				"type": "score",
+				"target": {
+					"type": "fixed",
+					"name": "inp"
+				},
+				"score": "int",
+				"scale": 0.0001
+			}
 		}
 	]
 }

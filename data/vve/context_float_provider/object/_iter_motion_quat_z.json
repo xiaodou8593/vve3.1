@@ -1,49 +1,61 @@
 {
-	"type":"add",
-	"inputs":[
+	"type": "add",
+	"inputs": [
 		{
-			"type":"mul",
-			"inputs":[
+			"type": "mul",
+			"inputs": [
 				{
-					"type":"score",
-					"target":{
-						"type":"fixed",
-						"name":"quat_start_z"
-					},
-					"score":"int",
-					"scale":0.0001
+					"type": "from_int",
+					"input": {
+						"type": "score",
+						"target": {
+							"type": "fixed",
+							"name": "quat_start_z"
+						},
+						"score": "int",
+						"scale": 0.0001
+					}
 				},
 				{
-					"type":"score",
-					"target":{
-						"type":"fixed",
-						"name":"cos"
-					},
-					"score":"int",
-					"scale":0.0001
+					"type": "from_int",
+					"input": {
+						"type": "score",
+						"target": {
+							"type": "fixed",
+							"name": "cos"
+						},
+						"score": "int",
+						"scale": 0.0001
+					}
 				}
 			]
 		},
 		{
-			"type":"mul",
-			"inputs":[
+			"type": "mul",
+			"inputs": [
 				{
-					"type":"score",
-					"target":{
-						"type":"fixed",
-						"name":"quat_orth_z"
-					},
-					"score":"int",
-					"scale":0.0001
+					"type": "from_int",
+					"input": {
+						"type": "score",
+						"target": {
+							"type": "fixed",
+							"name": "quat_orth_z"
+						},
+						"score": "int",
+						"scale": 0.0001
+					}
 				},
 				{
-					"type":"score",
-					"target":{
-						"type":"fixed",
-						"name":"sin"
-					},
-					"score":"int",
-					"scale":0.0001
+					"type": "from_int",
+					"input": {
+						"type": "score",
+						"target": {
+							"type": "fixed",
+							"name": "sin"
+						},
+						"score": "int",
+						"scale": 0.0001
+					}
 				}
 			]
 		}

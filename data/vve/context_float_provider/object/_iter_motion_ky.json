@@ -1,49 +1,61 @@
 {
-	"type":"add",
-	"inputs":[
+	"type": "add",
+	"inputs": [
 		{
-			"type":"mul",
-			"inputs":[
+			"type": "mul",
+			"inputs": [
 				{
-					"type":"score",
-					"target":{
-						"type":"fixed",
-						"name":"quat_w"
-					},
-					"score":"int",
-					"scale":0.0001
+					"type": "from_int",
+					"input": {
+						"type": "score",
+						"target": {
+							"type": "fixed",
+							"name": "quat_w"
+						},
+						"score": "int",
+						"scale": 0.0001
+					}
 				},
 				{
-					"type":"score",
-					"target":{
-						"type":"fixed",
-						"name":"quat_x"
-					},
-					"score":"int",
-					"scale":-0.0002
+					"type": "from_int",
+					"input": {
+						"type": "score",
+						"target": {
+							"type": "fixed",
+							"name": "quat_x"
+						},
+						"score": "int",
+						"scale": -0.0002
+					}
 				}
 			]
 		},
 		{
-			"type":"mul",
-			"inputs":[
+			"type": "mul",
+			"inputs": [
 				{
-					"type":"score",
-					"target":{
-						"type":"fixed",
-						"name":"quat_y"
-					},
-					"score":"int",
-					"scale":0.0001
+					"type": "from_int",
+					"input": {
+						"type": "score",
+						"target": {
+							"type": "fixed",
+							"name": "quat_y"
+						},
+						"score": "int",
+						"scale": 0.0001
+					}
 				},
 				{
-					"type":"score",
-					"target":{
-						"type":"fixed",
-						"name":"quat_z"
-					},
-					"score":"int",
-					"scale":0.0002
+					"type": "from_int",
+					"input": {
+						"type": "score",
+						"target": {
+							"type": "fixed",
+							"name": "quat_z"
+						},
+						"score": "int",
+						"scale": 0.0002
+					}
 				}
 			]
 		}
