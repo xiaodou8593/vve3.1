@@ -1,11 +1,12 @@
-#vve:object/_set_angular
+#vve:object/_set_angular_discard
 # 设置临时对象的角速度
 # 输入_this:{<angular_x,int,100w>,<angular_y,int,100w>,<angular_z,int,100w>,quaternion.xyzw}
 # 输出_this:{<angular_len,int,100w>,quaternion{...}}
 # 传入世界实体为执行者
 
 # 单位化当前四元数
-function math:quat/_norm_np
+#function math:quat/_norm_np
+function math:quat/_norm_sqrt
 
 # 计算角速度转轴和模长
 execute store result storage math:io xyz[0] double 0.0001 run scoreboard players get angular_x int
@@ -48,7 +49,46 @@ scoreboard players operation quat_start_w int = quat_w int
 scoreboard players set quat_phi int 0
 
 # 计算正交四元数
-execute store result score quat_orth_x int run compute default vve:object/_set_angular_ox 10000
-execute store result score quat_orth_y int run compute default vve:object/_set_angular_oy 10000
-execute store result score quat_orth_z int run compute default vve:object/_set_angular_oz 10000
-execute store result score quat_orth_w int run compute default vve:object/_set_angular_ow 10000
+#x分量
+scoreboard players operation quat_orth_x int = uvec_x int
+scoreboard players operation quat_orth_x int *= quat_start_w int
+scoreboard players operation sstemp int = uvec_y int
+scoreboard players operation sstemp int *= quat_start_z int
+scoreboard players operation quat_orth_x int += sstemp int
+scoreboard players operation sstemp int = uvec_z int
+scoreboard players operation sstemp int *= quat_start_y int
+scoreboard players operation quat_orth_x int -= sstemp int
+scoreboard players operation quat_orth_x int /= 10000 int
+
+#y分量
+scoreboard players operation quat_orth_y int = uvec_y int
+scoreboard players operation quat_orth_y int *= quat_start_w int
+scoreboard players operation sstemp int = uvec_x int
+scoreboard players operation sstemp int *= quat_start_z int
+scoreboard players operation quat_orth_y int -= sstemp int
+scoreboard players operation sstemp int = uvec_z int
+scoreboard players operation sstemp int *= quat_start_x int
+scoreboard players operation quat_orth_y int += sstemp int
+scoreboard players operation quat_orth_y int /= 10000 int
+
+#z分量
+scoreboard players operation quat_orth_z int = uvec_x int
+scoreboard players operation quat_orth_z int *= quat_start_y int
+scoreboard players operation sstemp int = uvec_y int
+scoreboard players operation sstemp int *= quat_start_x int
+scoreboard players operation quat_orth_z int -= sstemp int
+scoreboard players operation sstemp int = uvec_z int
+scoreboard players operation sstemp int *= quat_start_w int
+scoreboard players operation quat_orth_z int += sstemp int
+scoreboard players operation quat_orth_z int /= 10000 int
+
+#w分量
+scoreboard players operation quat_orth_w int = uvec_x int
+scoreboard players operation quat_orth_w int *= quat_start_x int
+scoreboard players operation sstemp int = uvec_y int
+scoreboard players operation sstemp int *= quat_start_y int
+scoreboard players operation quat_orth_w int += sstemp int
+scoreboard players operation sstemp int = uvec_z int
+scoreboard players operation sstemp int *= quat_start_z int
+scoreboard players operation quat_orth_w int += sstemp int
+scoreboard players operation quat_orth_w int /= -10000 int

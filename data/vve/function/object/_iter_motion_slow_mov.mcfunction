@@ -35,10 +35,10 @@ execute store result score ivec_x int run compute default vve:object/_iter_motio
 execute store result score ivec_y int run compute default vve:object/_iter_motion_iy 10000
 execute store result score ivec_z int run compute default vve:object/_iter_motion_iz 10000
 
-execute store result score jvec_x int run compute default vve:object/_iter_motion_ix 10000
-execute store result score jvec_y int run compute default vve:object/_iter_motion_iy 10000
-execute store result score jvec_z int run compute default vve:object/_iter_motion_iz 10000
+execute store result score jvec_x int run compute default vve:object/_iter_motion_jx 10000
+execute store result score jvec_y int run compute default vve:object/_iter_motion_jy 10000
+execute store result score jvec_z int run compute default vve:object/_iter_motion_jz 10000
 
-execute store result score kvec_x int run compute default vve:object/_iter_motion_ix 10000
-execute store result score kvec_y int run compute default vve:object/_iter_motion_iy 10000
-execute store result score kvec_z int run compute default vve:object/_iter_motion_iz 10000
+execute store result score kvec_x int run compute default vve:object/_iter_motion_kx 10000
+execute store result score kvec_y int run compute default vve:object/_iter_motion_ky 10000
+execute store result score kvec_z int run compute default vve:object/_iter_motion_kz 10000
