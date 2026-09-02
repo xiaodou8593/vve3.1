@@ -1,9 +1,9 @@
 {
-	"type":"sum",
-	"operands":[
+	"type":"add",
+	"inputs":[
 		{
-			"type":"product",
-			"operands":[
+			"type":"mul",
+			"inputs":[
 				{
 					"type":"score",
 					"target":{
@@ -25,8 +25,8 @@
 			]
 		},
 		{
-			"type":"product",
-			"operands":[
+			"type":"mul",
+			"inputs":[
 				{
 					"type":"score",
 					"target":{
@@ -48,8 +48,8 @@
 			]
 		},
 		{
-			"type":"product",
-			"operands":[
+			"type":"mul",
+			"inputs":[
 				{
 					"type":"score",
 					"target":{
@@ -71,8 +71,8 @@
 			]
 		},
 		{
-			"type":"product",
-			"operands":[
+			"type":"mul",
+			"inputs":[
 				{
 					"type":"score",
 					"target":{
