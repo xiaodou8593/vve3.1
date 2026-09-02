@@ -1,9 +1,9 @@
 {
-	"type":"sum",
-	"operands":[
+	"type":"add",
+	"inputs":[
 		{
-			"type":"product",
-			"operands":[
+			"type":"mul",
+			"inputs":[
 				{
 					"type":"score",
 					"target":{
@@ -20,13 +20,13 @@
 						"name":"quat_z"
 					},
 					"score":"int",
-					"scale":-0.0002
+					"scale":0.0002
 				}
 			]
 		},
 		{
-			"type":"product",
-			"operands":[
+			"type":"mul",
+			"inputs":[
 				{
 					"type":"score",
 					"target":{

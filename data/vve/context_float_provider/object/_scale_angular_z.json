@@ -1,11 +1,11 @@
 {
-	"type":"product",
-	"operands":[
+	"type":"mul",
+	"inputs":[
 		{
 			"type":"score",
 			"target":{
 				"type":"fixed",
-				"name":"angular_y"
+				"name":"angular_z"
 			},
 			"score":"int",
 			"scale":0.000001
