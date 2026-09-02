@@ -1,6 +1,6 @@
 {
-	"type":"product",
-	"operands":[
+	"type":"mul",
+	"inputs":[
 		{
 			"type":"score",
 			"target":{
