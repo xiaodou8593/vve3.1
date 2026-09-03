@@ -3,19 +3,17 @@
 	"input":{
 		"type":"mul",
 		"inputs":[
-			0.0000286478897565,
+			0.0000005,
 			{
 				"type":"from_int",
-				"inputs":[
-					{
-						"type":"score",
-						"target":{
-							"type":"fixed",
-							"name":"quat_phi"
-						},
-						"score":"int"
-					}
-				]
+				"input":{
+					"type":"score",
+					"target":{
+						"type":"fixed",
+						"name":"quat_phi"
+					},
+					"score":"int"
+				}
 			}
 		]
 	}

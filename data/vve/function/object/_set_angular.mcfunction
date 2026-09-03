@@ -8,37 +8,10 @@
 function math:quat/_norm_np
 
 # 计算角速度转轴和模长
-execute store result storage math:io xyz[0] double 0.0001 run scoreboard players get angular_x int
-execute store result storage math:io xyz[1] double 0.0001 run scoreboard players get angular_y int
-execute store result storage math:io xyz[2] double 0.0001 run scoreboard players get angular_z int
-data modify entity @s Pos set from storage math:io xyz
-execute positioned 0.0 0.0 0.0 facing entity @s feet run tp @s ^ ^ ^1.0 ~ ~
-data modify storage math:io xyz set from entity @s Pos
-execute store result score uvec_x int run data get storage math:io xyz[0] 10000
-execute store result score uvec_y int run data get storage math:io xyz[1] 10000
-execute store result score uvec_z int run data get storage math:io xyz[2] 10000
-
-scoreboard players operation angular_len int = angular_x int
-execute if score angular_x int matches ..-1 run scoreboard players operation angular_len int *= -1 int
-execute if score angular_y int matches 1.. run scoreboard players operation angular_len int += angular_y int
-execute if score angular_y int matches ..-1 run scoreboard players operation angular_len int -= angular_y int
-execute if score angular_z int matches 1.. run scoreboard players operation angular_len int += angular_z int
-execute if score angular_z int matches ..-1 run scoreboard players operation angular_len int -= angular_z int
-
-scoreboard players operation sstempd int = uvec_x int
-execute if score uvec_x int matches ..-1 run scoreboard players operation sstempd int *= -1 int
-execute if score uvec_y int matches 1.. run scoreboard players operation sstempd int += uvec_y int
-execute if score uvec_y int matches ..-1 run scoreboard players operation sstempd int -= uvec_y int
-execute if score uvec_z int matches 1.. run scoreboard players operation sstempd int += uvec_z int
-execute if score uvec_z int matches ..-1 run scoreboard players operation sstempd int -= uvec_z int
-
-scoreboard players operation sstemp_mod int = angular_len int
-scoreboard players operation angular_len int /= sstempd int
-scoreboard players operation sstemp_mod int %= sstempd int
-scoreboard players operation sstemp_mod int *= 10000 int
-scoreboard players operation sstemp_mod int /= sstempd int
-scoreboard players operation angular_len int *= 10000 int
-scoreboard players operation angular_len int += sstemp_mod int
+execute store result score angular_len int run compute default float vve:object/_angular_len 1000000
+execute store result score uvec_x int run compute default float vve:object/_angular_ux 10000
+execute store result score uvec_y int run compute default float vve:object/_angular_uy 10000
+execute store result score uvec_z int run compute default float vve:object/_angular_uz 10000
 
 # 当前姿态设置为旋转初始姿态
 scoreboard players operation quat_start_x int = quat_x int

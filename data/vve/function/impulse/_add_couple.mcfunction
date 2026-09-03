@@ -19,7 +19,7 @@ scoreboard players operation fvec_x int = impulse_fx int
 scoreboard players operation fvec_y int = impulse_fy int
 scoreboard players operation fvec_z int = impulse_fz int
 # 计算叉乘
-function math:fvec/_cross_vec_high
+function math:fvec/_cross_vec
 
 scoreboard players operation couple_x int -= fvec_x int
 scoreboard players operation couple_y int -= fvec_y int

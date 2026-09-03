@@ -35,7 +35,7 @@ scoreboard players operation vec_z int -= stemp_z int
 scoreboard players operation fvec_x int -= stemp_x int
 scoreboard players operation fvec_y int -= stemp_y int
 scoreboard players operation fvec_z int -= stemp_z int
-function math:vec/_cross_fvec_high
+function math:vec/_cross_fvec
 execute store result storage math:io xyz[0] double 0.0001 run scoreboard players get vec_x int
 execute store result storage math:io xyz[1] double 0.0001 run scoreboard players get vec_y int
 execute store result storage math:io xyz[2] double 0.0001 run scoreboard players get vec_z int

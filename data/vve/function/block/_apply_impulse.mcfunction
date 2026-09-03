@@ -15,7 +15,7 @@ scoreboard players operation fvec_x int = impulse_fx int
 scoreboard players operation fvec_y int = impulse_fy int
 scoreboard players operation fvec_z int = impulse_fz int
 # 计算叉乘
-function math:vec/_cross_fvec_high
+function math:vec/_cross_fvec
 
 # 改变角速度
 scoreboard players operation sstemp_x int = vec_x int

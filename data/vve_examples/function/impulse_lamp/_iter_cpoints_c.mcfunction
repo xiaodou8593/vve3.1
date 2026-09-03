@@ -32,76 +32,24 @@ execute store result score sstemp_tx int run scoreboard players operation sstemp
 execute store result score sstemp_ty int run scoreboard players operation sstemp_ky int /= 10000 int
 execute store result score sstemp_tz int run scoreboard players operation sstemp_kz int /= 10000 int
 
-scoreboard players operation sstemp_ax int = angular_x int
-scoreboard players operation sstemp_ay int = angular_y int
-scoreboard players operation sstemp_az int = angular_z int
-scoreboard players operation sstemp_ax int /= 100 int
-scoreboard players operation sstemp_ay int /= 100 int
-scoreboard players operation sstemp_az int /= 100 int
+# 线速度叉乘计算
+execute store result score sstempx int run compute default float vve:object/_liner_rx 10000
+execute store result score sstempy int run compute default float vve:object/_liner_ry 10000
+execute store result score sstemp_rz int run compute default float vve:object/_liner_rz 10000
+scoreboard players operation sstemp_rx int = sstempx int
+scoreboard players operation sstemp_ry int = sstempy int
 
-# 线速度组成部分
-scoreboard players operation sstempx int = sstemp_rx int
-scoreboard players operation sstemp_rx int = sstemp_ay int
-scoreboard players operation sstemp_rx int *= sstemp_rz int
-scoreboard players operation sstemp0 int = sstemp_ry int
-scoreboard players operation sstemp0 int *= sstemp_az int
-scoreboard players operation sstemp_rx int -= sstemp0 int
-scoreboard players operation sstemp_rx int /= 10000 int
-scoreboard players operation sstempy int = sstemp_ry int
-scoreboard players operation sstemp_ry int = sstemp_az int
-scoreboard players operation sstemp_ry int *= sstemp_rx int
-scoreboard players operation sstemp0 int = sstemp_rz int
-scoreboard players operation sstemp0 int *= sstemp_ax int
-scoreboard players operation sstemp_ry int -= sstemp0 int
-scoreboard players operation sstemp_ry int /= 10000 int
-scoreboard players operation sstemp_rz int = sstempy int
-scoreboard players operation sstemp_rz int *= sstemp_ax int
-scoreboard players operation sstemp0 int = sstemp_ay int
-scoreboard players operation sstemp0 int *= sstempx int
-scoreboard players operation sstemp_rz int -= sstemp0 int
-scoreboard players operation sstemp_rz int /= 10000 int
+execute store result score sstempx int run compute default float vve:object/_liner_sx 10000
+execute store result score sstempy int run compute default float vve:object/_liner_sy 10000
+execute store result score sstemp_sz int run compute default float vve:object/_liner_sz 10000
+scoreboard players operation sstemp_sx int = sstempx int
+scoreboard players operation sstemp_sy int = sstempy int
 
-scoreboard players operation sstempx int = sstemp_sx int
-scoreboard players operation sstemp_sx int = sstemp_ay int
-scoreboard players operation sstemp_sx int *= sstemp_sz int
-scoreboard players operation sstemp0 int = sstemp_sy int
-scoreboard players operation sstemp0 int *= sstemp_az int
-scoreboard players operation sstemp_sx int -= sstemp0 int
-scoreboard players operation sstemp_sx int /= 10000 int
-scoreboard players operation sstempy int = sstemp_sy int
-scoreboard players operation sstemp_sy int = sstemp_az int
-scoreboard players operation sstemp_sy int *= sstemp_sx int
-scoreboard players operation sstemp0 int = sstemp_sz int
-scoreboard players operation sstemp0 int *= sstemp_ax int
-scoreboard players operation sstemp_sy int -= sstemp0 int
-scoreboard players operation sstemp_sy int /= 10000 int
-scoreboard players operation sstemp_sz int = sstempy int
-scoreboard players operation sstemp_sz int *= sstemp_ax int
-scoreboard players operation sstemp0 int = sstemp_ay int
-scoreboard players operation sstemp0 int *= sstempx int
-scoreboard players operation sstemp_sz int -= sstemp0 int
-scoreboard players operation sstemp_sz int /= 10000 int
-
-scoreboard players operation sstempx int = sstemp_tx int
-scoreboard players operation sstemp_tx int = sstemp_ay int
-scoreboard players operation sstemp_tx int *= sstemp_tz int
-scoreboard players operation sstemp0 int = sstemp_ty int
-scoreboard players operation sstemp0 int *= sstemp_az int
-scoreboard players operation sstemp_tx int -= sstemp0 int
-scoreboard players operation sstemp_tx int /= 10000 int
-scoreboard players operation sstempy int = sstemp_ty int
-scoreboard players operation sstemp_ty int = sstemp_az int
-scoreboard players operation sstemp_ty int *= sstemp_tx int
-scoreboard players operation sstemp0 int = sstemp_tz int
-scoreboard players operation sstemp0 int *= sstemp_ax int
-scoreboard players operation sstemp_ty int -= sstemp0 int
-scoreboard players operation sstemp_ty int /= 10000 int
-scoreboard players operation sstemp_tz int = sstempy int
-scoreboard players operation sstemp_tz int *= sstemp_ax int
-scoreboard players operation sstemp0 int = sstemp_ay int
-scoreboard players operation sstemp0 int *= sstempx int
-scoreboard players operation sstemp_tz int -= sstemp0 int
-scoreboard players operation sstemp_tz int /= 10000 int
+execute store result score sstempx int run compute default float vve:object/_liner_tx 10000
+execute store result score sstempy int run compute default float vve:object/_liner_ty 10000
+execute store result score sstemp_tz int run compute default float vve:object/_liner_tz 10000
+scoreboard players operation sstemp_tx int = sstempx int
+scoreboard players operation sstemp_ty int = sstempy int
 
 #tellraw @a ["sstemp_r: ",{"score":{"name":"sstemp_rx","objective":"int"}},", ",{"score":{"name":"sstemp_ry","objective":"int"}},", ",{"score":{"name":"sstemp_rz","objective":"int"}}]
 #tellraw @a ["sstemp_s: ",{"score":{"name":"sstemp_sx","objective":"int"}},", ",{"score":{"name":"sstemp_sy","objective":"int"}},", ",{"score":{"name":"sstemp_sz","objective":"int"}}]
