@@ -1,63 +1,83 @@
 {
-	"type": "add",
-	"inputs": [
-		{
-			"type": "mul",
-			"inputs": [
-				{
-					"type": "from_int",
-					"input": {
-						"type": "score",
-						"target": {
-							"type": "fixed",
-							"name": "quat_start_y"
-						},
-						"score": "int",
-						"scale": 0.0001
-					}
-				},
-				{
-					"type": "from_int",
-					"input": {
-						"type": "score",
-						"target": {
-							"type": "fixed",
-							"name": "cos"
-						},
-						"score": "int",
-						"scale": 0.0001
-					}
-				}
-			]
-		},
-		{
-			"type": "mul",
-			"inputs": [
-				{
-					"type": "from_int",
-					"input": {
-						"type": "score",
-						"target": {
-							"type": "fixed",
-							"name": "quat_orth_y"
-						},
-						"score": "int",
-						"scale": 0.0001
-					}
-				},
-				{
-					"type": "from_int",
-					"input": {
-						"type": "score",
-						"target": {
-							"type": "fixed",
-							"name": "sin"
-						},
-						"score": "int",
-						"scale": 0.0001
-					}
-				}
-			]
-		}
-	]
+  "type": "add",
+  "inputs": [
+    {
+      "type": "mul",
+      "inputs": [
+        {
+          "type": "mul",
+          "inputs": [
+            0.0001,
+            {
+              "type": "from_int",
+              "input": {
+                "type": "score",
+                "target": {
+                  "type": "fixed",
+                  "name": "quat_start_y"
+                },
+                "score": "int"
+              }
+            }
+          ]
+        },
+        {
+          "type": "mul",
+          "inputs": [
+            0.0001,
+            {
+              "type": "from_int",
+              "input": {
+                "type": "score",
+                "target": {
+                  "type": "fixed",
+                  "name": "cos"
+                },
+                "score": "int"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mul",
+      "inputs": [
+        {
+          "type": "mul",
+          "inputs": [
+            0.0001,
+            {
+              "type": "from_int",
+              "input": {
+                "type": "score",
+                "target": {
+                  "type": "fixed",
+                  "name": "quat_orth_y"
+                },
+                "score": "int"
+              }
+            }
+          ]
+        },
+        {
+          "type": "mul",
+          "inputs": [
+            0.0001,
+            {
+              "type": "from_int",
+              "input": {
+                "type": "score",
+                "target": {
+                  "type": "fixed",
+                  "name": "sin"
+                },
+                "score": "int"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

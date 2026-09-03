@@ -14,9 +14,9 @@ scoreboard players operation vy int /= 10000 int
 scoreboard players operation vz int /= 10000 int
 
 # 角速度缩放
-execute store result score angular_len int run compute default vve:object/_apply_friction_al 1000000
+execute store result score angular_len int run compute default float vve:object/_apply_friction_al 1000000
 
 # 角速度分量缩放
-execute store result score angular_x int run compute default vve:object/_apply_friction_ax 1000000
-execute store result score angular_y int run compute default vve:object/_apply_friction_ay 1000000
-execute store result score angular_z int run compute default vve:object/_apply_friction_az 1000000
+execute store result score angular_x int run compute default float vve:object/_apply_friction_ax 1000000
+execute store result score angular_y int run compute default float vve:object/_apply_friction_ay 1000000
+execute store result score angular_z int run compute default float vve:object/_apply_friction_az 1000000

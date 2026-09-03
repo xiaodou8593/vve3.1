@@ -1,92 +1,122 @@
 {
-	"type": "sum",
-	"operands": [
-		{
-			"type": "product",
-			"operands": [
-				{
-					"type": "from_int",
-					"input": {
-						"type": "score",
-						"target": {
-							"type": "fixed",
-							"name": "uvec_x"
-						},
-						"score": "int",
-						"scale": 0.0001
-					}
-				},
-				{
-					"type": "from_int",
-					"input": {
-						"type": "score",
-						"target": {
-							"type": "fixed",
-							"name": "quat_start_w"
-						},
-						"score": "int",
-						"scale": 0.0001
-					}
-				}
-			]
-		},
-		{
-			"type": "product",
-			"operands": [
-				{
-					"type": "from_int",
-					"input": {
-						"type": "score",
-						"target": {
-							"type": "fixed",
-							"name": "uvec_y"
-						},
-						"score": "int",
-						"scale": 0.0001
-					}
-				},
-				{
-					"type": "from_int",
-					"input": {
-						"type": "score",
-						"target": {
-							"type": "fixed",
-							"name": "quat_start_z"
-						},
-						"score": "int",
-						"scale": 0.0001
-					}
-				}
-			]
-		},
-		{
-			"type": "product",
-			"operands": [
-				{
-					"type": "from_int",
-					"input": {
-						"type": "score",
-						"target": {
-							"type": "fixed",
-							"name": "uvec_z"
-						},
-						"score": "int",
-						"scale": 0.0001
-					}
-				},
-				{
-					"type": "from_int",
-					"input": {
-						"type": "score",
-						"target": {
-							"type": "fixed",
-							"name": "quat_start_y"
-						},
-						"score": "int",
-						"scale": -0.0001
-					}
-				}
-			]
-		}
-	]
+  "type": "add",
+  "inputs": [
+    {
+      "type": "mul",
+      "inputs": [
+        {
+          "type": "mul",
+          "inputs": [
+            0.0001,
+            {
+              "type": "from_int",
+              "input": {
+                "type": "score",
+                "target": {
+                  "type": "fixed",
+                  "name": "uvec_x"
+                },
+                "score": "int"
+              }
+            }
+          ]
+        },
+        {
+          "type": "mul",
+          "inputs": [
+            0.0001,
+            {
+              "type": "from_int",
+              "input": {
+                "type": "score",
+                "target": {
+                  "type": "fixed",
+                  "name": "quat_start_w"
+                },
+                "score": "int"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mul",
+      "inputs": [
+        {
+          "type": "mul",
+          "inputs": [
+            0.0001,
+            {
+              "type": "from_int",
+              "input": {
+                "type": "score",
+                "target": {
+                  "type": "fixed",
+                  "name": "uvec_y"
+                },
+                "score": "int"
+              }
+            }
+          ]
+        },
+        {
+          "type": "mul",
+          "inputs": [
+            0.0001,
+            {
+              "type": "from_int",
+              "input": {
+                "type": "score",
+                "target": {
+                  "type": "fixed",
+                  "name": "quat_start_z"
+                },
+                "score": "int"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "mul",
+      "inputs": [
+        {
+          "type": "mul",
+          "inputs": [
+            0.0001,
+            {
+              "type": "from_int",
+              "input": {
+                "type": "score",
+                "target": {
+                  "type": "fixed",
+                  "name": "uvec_z"
+                },
+                "score": "int"
+              }
+            }
+          ]
+        },
+        {
+          "type": "mul",
+          "inputs": [
+            -0.0001,
+            {
+              "type": "from_int",
+              "input": {
+                "type": "score",
+                "target": {
+                  "type": "fixed",
+                  "name": "quat_start_y"
+                },
+                "score": "int"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }

@@ -48,7 +48,7 @@ scoreboard players operation quat_start_w int = quat_w int
 scoreboard players set quat_phi int 0
 
 # 计算正交四元数
-execute store result score quat_orth_x int run compute default vve:object/_set_angular_ox 10000
-execute store result score quat_orth_y int run compute default vve:object/_set_angular_oy 10000
-execute store result score quat_orth_z int run compute default vve:object/_set_angular_oz 10000
-execute store result score quat_orth_w int run compute default vve:object/_set_angular_ow 10000
+execute store result score quat_orth_x int run compute default float vve:object/_set_angular_ox 10000
+execute store result score quat_orth_y int run compute default float vve:object/_set_angular_oy 10000
+execute store result score quat_orth_z int run compute default float vve:object/_set_angular_oz 10000
+execute store result score quat_orth_w int run compute default float vve:object/_set_angular_ow 10000

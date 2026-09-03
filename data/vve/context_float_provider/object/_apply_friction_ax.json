@@ -1,29 +1,39 @@
 {
-	"type": "mul",
-	"inputs": [
-		{
-			"type": "from_int",
-			"input": {
-				"type": "score",
-				"target": {
-					"type": "fixed",
-					"name": "angular_x"
-				},
-				"score": "int",
-				"scale": 1e-06
-			}
-		},
-		{
-			"type": "from_int",
-			"input": {
-				"type": "score",
-				"target": {
-					"type": "fixed",
-					"name": "friction_response"
-				},
-				"score": "int",
-				"scale": 0.0001
-			}
-		}
-	]
+  "type": "mul",
+  "inputs": [
+    {
+      "type": "mul",
+      "inputs": [
+        1e-06,
+        {
+          "type": "from_int",
+          "input": {
+            "type": "score",
+            "target": {
+              "type": "fixed",
+              "name": "angular_x"
+            },
+            "score": "int"
+          }
+        }
+      ]
+    },
+    {
+      "type": "mul",
+      "inputs": [
+        0.0001,
+        {
+          "type": "from_int",
+          "input": {
+            "type": "score",
+            "target": {
+              "type": "fixed",
+              "name": "friction_response"
+            },
+            "score": "int"
+          }
+        }
+      ]
+    }
+  ]
 }
