@@ -20,14 +20,14 @@ execute store result score quat_z int run compute default float vve:object/_iter
 execute store result score quat_w int run compute default float vve:object/_iter_motion_quat_w 10000
 
 # 四元数转局部坐标系
-execute store result score ivec_x int run compute default float vve:object/_iter_motion_ix 10000
-execute store result score ivec_y int run compute default float vve:object/_iter_motion_iy 10000
-execute store result score ivec_z int run compute default float vve:object/_iter_motion_iz 10000
+execute store result score ivec_x int run compute default float math:quat/_touvw_ix 10000
+execute store result score ivec_y int run compute default float math:quat/_touvw_iy 10000
+execute store result score ivec_z int run compute default float math:quat/_touvw_iz 10000
 
-execute store result score jvec_x int run compute default float vve:object/_iter_motion_jx 10000
-execute store result score jvec_y int run compute default float vve:object/_iter_motion_jy 10000
-execute store result score jvec_z int run compute default float vve:object/_iter_motion_jz 10000
+execute store result score jvec_x int run compute default float math:quat/_touvw_jx 10000
+execute store result score jvec_y int run compute default float math:quat/_touvw_jy 10000
+execute store result score jvec_z int run compute default float math:quat/_touvw_jz 10000
 
-execute store result score kvec_x int run compute default float vve:object/_iter_motion_kx 10000
-execute store result score kvec_y int run compute default float vve:object/_iter_motion_ky 10000
-execute store result score kvec_z int run compute default float vve:object/_iter_motion_kz 10000
+execute store result score kvec_x int run compute default float math:quat/_touvw_kx 10000
+execute store result score kvec_y int run compute default float math:quat/_touvw_ky 10000
+execute store result score kvec_z int run compute default float math:quat/_touvw_kz 10000
