@@ -4,38 +4,12 @@
 # 输入vve:spin{...}
 # 传入世界实体为执行者
 
-scoreboard players operation vec_x int = couple_x int
-scoreboard players operation vec_y int = couple_y int
-scoreboard players operation vec_z int = couple_z int
-scoreboard players operation sstemp_x int = vec_x int
-scoreboard players operation sstemp_y int = vec_y int
-scoreboard players operation sstemp_z int = vec_z int
-scoreboard players operation vec_x int /= inertia int
-scoreboard players operation vec_y int /= inertia int
-scoreboard players operation vec_z int /= inertia int
-scoreboard players operation sstemp_x int %= inertia int
-scoreboard players operation sstemp_y int %= inertia int
-scoreboard players operation sstemp_z int %= inertia int
-scoreboard players operation vec_x int *= 100 int
-scoreboard players operation vec_y int *= 100 int
-scoreboard players operation vec_z int *= 100 int
-scoreboard players operation sstemp_x int *= 100 int
-scoreboard players operation sstemp_y int *= 100 int
-scoreboard players operation sstemp_z int *= 100 int
-scoreboard players operation sstemp_x int /= inertia int
-scoreboard players operation sstemp_y int /= inertia int
-scoreboard players operation sstemp_z int /= inertia int
+execute store result score vec_x int run compute default float vve:object/_apply_couple_x 10000
+execute store result score vec_y int run compute default float vve:object/_apply_couple_y 10000
+execute store result score vec_z int run compute default float vve:object/_apply_couple_z 10000
 
 # 计算转轴和模长
-execute store result storage math:io xyz[0] double 0.0001 run scoreboard players operation vec_x int += sstemp_x int
-execute store result storage math:io xyz[1] double 0.0001 run scoreboard players operation vec_y int += sstemp_y int
-execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation vec_z int += sstemp_z int
-data modify entity @s Pos set from storage math:io xyz
-execute positioned 0.0 0.0 0.0 facing entity @s feet run tp @s ^ ^ ^1.0 ~ ~
-data modify storage math:io xyz set from entity @s Pos
-execute store result score uvec_x int run data get storage math:io xyz[0] 10000
-execute store result score uvec_y int run data get storage math:io xyz[1] 10000
-execute store result score uvec_z int run data get storage math:io xyz[2] 10000
+function math:vec/_norm
 
 scoreboard players operation theta int = vec_x int
 execute if score vec_x int matches ..-1 run scoreboard players operation theta int *= -1 int

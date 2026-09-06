@@ -14,15 +14,7 @@ scoreboard players set sstemp_n1_x int 5773
 scoreboard players set sstemp_n1_y int 5773
 scoreboard players set sstemp_n1_z int 5773
 # 与各面法向量点乘
-scoreboard players operation sstemp_d1 int = u int
-scoreboard players operation sstemp_d1 int *= sstemp_n1_x int
-scoreboard players operation sstemp_m int = v int
-scoreboard players operation sstemp_m int *= sstemp_n1_y int
-scoreboard players operation sstemp_d1 int += sstemp_m int
-scoreboard players operation sstemp_m int = w int
-scoreboard players operation sstemp_m int *= sstemp_n1_z int
-scoreboard players operation sstemp_d1 int += sstemp_m int
-scoreboard players operation sstemp_d1 int /= 10000 int
+execute store result score sstemp_d1 int run compute default float vve:object/regular/_dot_sstemp_n1 10000
 scoreboard players operation cos int > sstemp_d1 int
 # 选择贴合面
-execute if score cos int = sstemp_d1 int run return run function $(module_prefix)regular/surface_1
+execute if score cos int = sstemp_d1 int run return run function vve:object/regular/surface_1

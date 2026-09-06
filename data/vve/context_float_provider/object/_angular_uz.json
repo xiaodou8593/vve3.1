@@ -5,15 +5,9 @@
 			"type":"div",
 			"left":1.0,
 			"right":{
-				"type":"from_int",
-				"input":{
-					"type":"score",
-					"target":{
-						"type":"fixed",
-						"name":"angular_len"
-					},
-					"score":"int"
-				}
+				"type":"storage",
+				"storage":"vve:io",
+				"path":"sstemp_len"
 			}
 		},
 		{

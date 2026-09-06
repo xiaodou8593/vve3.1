@@ -36,15 +36,11 @@ scoreboard players operation fvec_x int -= stemp_x int
 scoreboard players operation fvec_y int -= stemp_y int
 scoreboard players operation fvec_z int -= stemp_z int
 function math:vec/_cross_fvec
-execute store result storage math:io xyz[0] double 0.0001 run scoreboard players get vec_x int
-execute store result storage math:io xyz[1] double 0.0001 run scoreboard players get vec_y int
-execute store result storage math:io xyz[2] double 0.0001 run scoreboard players get vec_z int
-data modify entity @s Pos set from storage math:io xyz
-execute positioned 0.0 0.0 0.0 facing entity @s feet run tp @s ^ ^ ^1.0
-data modify storage math:io xyz set from entity @s Pos
-execute store result score vec_x int run data get storage math:io xyz[0] 10000
-execute store result score vec_y int run data get storage math:io xyz[1] 10000
-execute store result score vec_z int run data get storage math:io xyz[2] 10000
+data modify storage math:io sstemp_len set compute default float math:vec/_norm_len
+execute store result score vec_x int run compute default float math:vec/_norm_ux 10000
+execute store result score vec_y int run compute default float math:vec/_norm_uy 10000
+execute store result score vec_z int run compute default float math:vec/_norm_uz 10000
+execute if score vec_x int matches 0 if score vec_y int matches 0 if score vec_z int matches 0 run scoreboard players set vec_z int 10000
 scoreboard players operation nvec_x int *= vec_x int
 scoreboard players operation nvec_y int *= vec_y int
 scoreboard players operation nvec_z int *= vec_z int
@@ -59,22 +55,49 @@ scoreboard players operation nvec_x int *= stemp_s int
 scoreboard players operation nvec_y int *= stemp_s int
 scoreboard players operation nvec_z int *= stemp_s int
 
-# 平面四元数
-function math:iquat/_nvec_to
+function math:uvw/_nvec_to
+scoreboard players set cos int -2147483648
+# 设置各面法向量
+scoreboard players set sstemp_n1_x int 10000
+scoreboard players set sstemp_n1_y int 0
+scoreboard players set sstemp_n1_z int 0
 
-# 转换为相对四元数
-function math:quat/_relative
-function math:rquat/_to_quat
+scoreboard players set sstemp_n2_x int -10000
+scoreboard players set sstemp_n2_y int 0
+scoreboard players set sstemp_n2_z int 0
 
-# 四元数规整化
-function math:quat/_touvw
-function math:quat/_regular
-function math:rquat/_to_quat
+scoreboard players set sstemp_n3_x int 0
+scoreboard players set sstemp_n3_y int 10000
+scoreboard players set sstemp_n3_z int 0
 
-# 转换为世界坐标系
-function math:quat/_mult
-function math:rquat/_to_quat
-function math:quat/_touvw
+scoreboard players set sstemp_n4_x int 0
+scoreboard players set sstemp_n4_y int -10000
+scoreboard players set sstemp_n4_z int 0
+
+scoreboard players set sstemp_n5_x int 0
+scoreboard players set sstemp_n5_y int 0
+scoreboard players set sstemp_n5_z int 10000
+
+scoreboard players set sstemp_n6_x int 0
+scoreboard players set sstemp_n6_y int 0
+scoreboard players set sstemp_n6_z int -10000
+
+# 与各面法向量点乘
+execute store result score sstemp_d1 int run compute default float vve:object/regular/_dot_sstemp_n1 10000
+execute store result score sstemp_d2 int run compute default float vve:object/regular/_dot_sstemp_n2 10000
+execute store result score sstemp_d3 int run compute default float vve:object/regular/_dot_sstemp_n3 10000
+execute store result score sstemp_d4 int run compute default float vve:object/regular/_dot_sstemp_n4 10000
+execute store result score sstemp_d5 int run compute default float vve:object/regular/_dot_sstemp_n5 10000
+execute store result score sstemp_d6 int run compute default float vve:object/regular/_dot_sstemp_n6 10000
+scoreboard players operation cos int > sstemp_d1 int
+scoreboard players operation cos int > sstemp_d2 int
+scoreboard players operation cos int > sstemp_d3 int
+scoreboard players operation cos int > sstemp_d4 int
+scoreboard players operation cos int > sstemp_d5 int
+scoreboard players operation cos int > sstemp_d6 int
+
+# 选择贴合面
+function vve:object/regular/branch_6
 
 # 将旋转后的碰撞点对齐
 scoreboard players operation u int = stemp_u int
@@ -92,53 +115,15 @@ scoreboard players operation y int -= vec_y int
 scoreboard players operation z int -= vec_z int
 
 # 消除nvec方向的位移并施加
-scoreboard players operation stemp_x int = shift_x int
-scoreboard players operation stemp_y int = shift_y int
-scoreboard players operation stemp_z int = shift_z int
-scoreboard players operation stemp_x int *= nvec_x int
-scoreboard players operation stemp_y int *= nvec_y int
-scoreboard players operation stemp_z int *= nvec_z int
-scoreboard players operation stemp_x int += stemp_y int
-scoreboard players operation stemp_x int += stemp_z int
-execute store result score stemp_y int store result score stemp_z int run scoreboard players operation stemp_x int /= 10000 int
-scoreboard players operation stemp_x int *= nvec_x int
-scoreboard players operation stemp_y int *= nvec_y int
-scoreboard players operation stemp_z int *= nvec_z int
-scoreboard players operation stemp_x int /= 10000 int
-scoreboard players operation stemp_y int /= 10000 int
-scoreboard players operation stemp_z int /= 10000 int
-scoreboard players operation shift_x int -= stemp_x int
-scoreboard players operation shift_y int -= stemp_y int
-scoreboard players operation shift_z int -= stemp_z int
+execute store result score inp int run compute default float vve:vehicle/_shift_dot_nvec 10000
+execute store result score shift_x int run compute default float math:nvec/_scale_x 1000000
+execute store result score shift_y int run compute default float math:nvec/_scale_y 1000000
+execute store result score shift_z int run compute default float math:nvec/_scale_z 1000000
 scoreboard players operation x int += shift_x int
 scoreboard players operation y int += shift_y int
 scoreboard players operation z int += shift_z int
 
 # 消除角速度
 execute if score temp_surface int matches 0 run return fail
-execute if score angular_x int matches ..-1 run scoreboard players add angular_x int 99
-execute if score angular_y int matches ..-1 run scoreboard players add angular_y int 99
-execute if score angular_z int matches ..-1 run scoreboard players add angular_z int 99
-scoreboard players operation angular_x int /= 100 int
-scoreboard players operation angular_y int /= 100 int
-scoreboard players operation angular_z int /= 100 int
 
-scoreboard players operation angular_x int *= nvec_x int
-scoreboard players operation angular_y int *= nvec_y int
-scoreboard players operation angular_z int *= nvec_z int
-scoreboard players operation angular_x int += angular_y int
-scoreboard players operation angular_x int += angular_z int
-execute if score angular_x int matches ..-1 run scoreboard players add angular_x int 9999
-execute store result score angular_y int store result score angular_z int run scoreboard players operation angular_x int /= 10000 int
-
-scoreboard players operation angular_x int *= nvec_x int
-scoreboard players operation angular_y int *= nvec_y int
-scoreboard players operation angular_z int *= nvec_z int
-execute if score angular_x int matches ..-1 run scoreboard players add angular_x int 99
-execute if score angular_y int matches ..-1 run scoreboard players add angular_y int 99
-execute if score angular_z int matches ..-1 run scoreboard players add angular_z int 99
-scoreboard players operation angular_x int /= 100 int
-scoreboard players operation angular_y int /= 100 int
-scoreboard players operation angular_z int /= 100 int
-
-function vve:object/_set_angular
+function vve:object/_regular_angular

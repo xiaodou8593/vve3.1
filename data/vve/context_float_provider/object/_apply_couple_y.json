@@ -1,0 +1,25 @@
+{
+	"type":"div",
+	"left":{
+		"type":"from_int",
+		"input":{
+			"type":"score",
+			"target":{
+				"type":"fixed",
+				"name":"vec_y"
+			},
+			"score":"int"
+		}
+	},
+	"right":{
+		"type":"from_int",
+		"input":{
+			"type":"score",
+			"target":{
+				"type":"fixed",
+				"name":"inertia"
+			},
+			"score":"int"
+		}
+	}
+}

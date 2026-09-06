@@ -8,10 +8,12 @@
 function math:quat/_norm_np
 
 # 计算角速度转轴和模长
-execute store result score angular_len int run compute default float vve:object/_angular_len 1000000
+data modify storage vve:io sstemp_len set compute default float vve:object/_angular_len
+execute store result score angular_len int run data get storage vve:io sstemp_len
 execute store result score uvec_x int run compute default float vve:object/_angular_ux 10000
 execute store result score uvec_y int run compute default float vve:object/_angular_uy 10000
 execute store result score uvec_z int run compute default float vve:object/_angular_uz 10000
+execute if score uvec_x int matches 0 if score uvec_y int matches 0 if score uvec_z int matches 0 run scoreboard players set uvec_z int 10000
 
 # 当前姿态设置为旋转初始姿态
 scoreboard players operation quat_start_x int = quat_x int

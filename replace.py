@@ -1,34 +1,5 @@
 import os
 
-# 旧内容（严格按您提供的格式，保留原换行和缩进）
-OLD_CONTENT = """scoreboard players operation sstempx int = sstemp_tx int
-scoreboard players operation sstemp_tx int = sstemp_ay int
-scoreboard players operation sstemp_tx int *= sstemp_tz int
-scoreboard players operation sstemp0 int = sstemp_ty int
-scoreboard players operation sstemp0 int *= sstemp_az int
-scoreboard players operation sstemp_tx int -= sstemp0 int
-scoreboard players operation sstemp_tx int /= 10000 int
-scoreboard players operation sstempy int = sstemp_ty int
-scoreboard players operation sstemp_ty int = sstemp_az int
-scoreboard players operation sstemp_ty int *= sstemp_tx int
-scoreboard players operation sstemp0 int = sstemp_tz int
-scoreboard players operation sstemp0 int *= sstemp_ax int
-scoreboard players operation sstemp_ty int -= sstemp0 int
-scoreboard players operation sstemp_ty int /= 10000 int
-scoreboard players operation sstemp_tz int = sstempy int
-scoreboard players operation sstemp_tz int *= sstemp_ax int
-scoreboard players operation sstemp0 int = sstemp_ay int
-scoreboard players operation sstemp0 int *= sstempx int
-scoreboard players operation sstemp_tz int -= sstemp0 int
-scoreboard players operation sstemp_tz int /= 10000 int"""
-
-# 新内容
-NEW_CONTENT = """execute store result score sstempx int run compute default float vve:object/_liner_tx 10000
-execute store result score sstempy int run compute default float vve:object/_liner_ty 10000
-execute store result score sstemp_tz int run compute default float vve:object/_liner_tz 10000
-scoreboard players operation sstemp_tx int = sstempx int
-scoreboard players operation sstemp_ty int = sstempy int"""
-
 def process_file(filepath):
     """读取文件，若包含旧内容则替换并写回，返回是否修改"""
     try:
@@ -65,5 +36,38 @@ def main():
 
     print(f"\n完成！共修改 {modified_count} 个文件。")
 
-if __name__ == "__main__":
-    main()
+
+# 旧内容（严格按您提供的格式，保留原换行和缩进）
+OLD_CONTENT = """scoreboard players operation sstemp_x int = vec_x int
+scoreboard players operation sstemp_y int = vec_y int
+scoreboard players operation sstemp_z int = vec_z int
+scoreboard players operation vec_x int /= inertia int
+scoreboard players operation vec_y int /= inertia int
+scoreboard players operation vec_z int /= inertia int
+scoreboard players operation sstemp_x int %= inertia int
+scoreboard players operation sstemp_y int %= inertia int
+scoreboard players operation sstemp_z int %= inertia int
+scoreboard players operation vec_x int *= 10000 int
+scoreboard players operation vec_y int *= 10000 int
+scoreboard players operation vec_z int *= 10000 int
+scoreboard players operation sstemp_x int *= 10000 int
+scoreboard players operation sstemp_y int *= 10000 int
+scoreboard players operation sstemp_z int *= 10000 int
+scoreboard players operation sstemp_x int /= inertia int
+scoreboard players operation sstemp_y int /= inertia int
+scoreboard players operation sstemp_z int /= inertia int
+scoreboard players operation vec_x int += sstemp_x int
+scoreboard players operation vec_y int += sstemp_y int
+scoreboard players operation vec_z int += sstemp_z int
+scoreboard players operation angular_x int += vec_x int
+scoreboard players operation angular_y int += vec_y int
+scoreboard players operation angular_z int += vec_z int"""
+
+# 新内容
+NEW_CONTENT = """execute store result score vec_x int run compute default float vve:object/_apply_couple_x 10000
+execute store result score vec_y int run compute default float vve:object/_apply_couple_y 10000
+execute store result score vec_z int run compute default float vve:object/_apply_couple_z 10000
+scoreboard players operation angular_x int += vec_x int
+scoreboard players operation angular_y int += vec_y int
+scoreboard players operation angular_z int += vec_z int"""
+main()

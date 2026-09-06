@@ -18,27 +18,9 @@ scoreboard players operation fvec_z int = impulse_fz int
 function math:vec/_cross_fvec
 
 # 改变角速度
-scoreboard players operation sstemp_x int = vec_x int
-scoreboard players operation sstemp_y int = vec_y int
-scoreboard players operation sstemp_z int = vec_z int
-scoreboard players operation vec_x int /= inertia int
-scoreboard players operation vec_y int /= inertia int
-scoreboard players operation vec_z int /= inertia int
-scoreboard players operation sstemp_x int %= inertia int
-scoreboard players operation sstemp_y int %= inertia int
-scoreboard players operation sstemp_z int %= inertia int
-scoreboard players operation vec_x int *= 10000 int
-scoreboard players operation vec_y int *= 10000 int
-scoreboard players operation vec_z int *= 10000 int
-scoreboard players operation sstemp_x int *= 10000 int
-scoreboard players operation sstemp_y int *= 10000 int
-scoreboard players operation sstemp_z int *= 10000 int
-scoreboard players operation sstemp_x int /= inertia int
-scoreboard players operation sstemp_y int /= inertia int
-scoreboard players operation sstemp_z int /= inertia int
-scoreboard players operation vec_x int += sstemp_x int
-scoreboard players operation vec_y int += sstemp_y int
-scoreboard players operation vec_z int += sstemp_z int
+execute store result score vec_x int run compute default float vve:object/_apply_couple_x 10000
+execute store result score vec_y int run compute default float vve:object/_apply_couple_y 10000
+execute store result score vec_z int run compute default float vve:object/_apply_couple_z 10000
 scoreboard players operation angular_x int += vec_x int
 scoreboard players operation angular_y int += vec_y int
 scoreboard players operation angular_z int += vec_z int

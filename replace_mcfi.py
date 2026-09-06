@@ -1,18 +1,5 @@
 import os
 
-# 旧内容（严格按您提供的格式，保留原换行和缩进）
-OLD_CONTENT = """scoreboard players operation sstemp_ax int = angular_x int
-scoreboard players operation sstemp_ay int = angular_y int
-scoreboard players operation sstemp_az int = angular_z int
-scoreboard players operation sstemp_ax int /= 100 int
-scoreboard players operation sstemp_ay int /= 100 int
-scoreboard players operation sstemp_az int /= 100 int
-
-# 线速度组成部分"""
-
-# 新内容
-NEW_CONTENT = """# 线速度叉乘计算"""
-
 def process_file(filepath):
     """读取文件，若包含旧内容则替换并写回，返回是否修改"""
     try:
@@ -49,5 +36,38 @@ def main():
 
     print(f"\n完成！共修改 {modified_count} 个文件。")
 
-if __name__ == "__main__":
-    main()
+
+# 旧内容（严格按您提供的格式，保留原换行和缩进）
+OLD_CONTENT = """scoreboard players operation sstemp_x int = vec_x int
+scoreboard players operation sstemp_y int = vec_y int
+scoreboard players operation sstemp_z int = vec_z int
+scoreboard players operation vec_x int /= inertia int
+scoreboard players operation vec_y int /= inertia int
+scoreboard players operation vec_z int /= inertia int
+scoreboard players operation sstemp_x int %= inertia int
+scoreboard players operation sstemp_y int %= inertia int
+scoreboard players operation sstemp_z int %= inertia int
+scoreboard players operation vec_x int *= 10000 int
+scoreboard players operation vec_y int *= 10000 int
+scoreboard players operation vec_z int *= 10000 int
+scoreboard players operation sstemp_x int *= 10000 int
+scoreboard players operation sstemp_y int *= 10000 int
+scoreboard players operation sstemp_z int *= 10000 int
+scoreboard players operation sstemp_x int /= inertia int
+scoreboard players operation sstemp_y int /= inertia int
+scoreboard players operation sstemp_z int /= inertia int
+scoreboard players operation vec_x int += sstemp_x int
+scoreboard players operation vec_y int += sstemp_y int
+scoreboard players operation vec_z int += sstemp_z int
+scoreboard players operation angular_x int += vec_x int
+scoreboard players operation angular_y int += vec_y int
+scoreboard players operation angular_z int += vec_z int"""
+
+# 新内容
+NEW_CONTENT = """execute store result score vec_x int run compute default float vve:object/_apply_couple_x 10000
+execute store result score vec_y int run compute default float vve:object/_apply_couple_y 10000
+execute store result score vec_z int run compute default float vve:object/_apply_couple_z 10000
+scoreboard players operation angular_x int += vec_x int
+scoreboard players operation angular_y int += vec_y int
+scoreboard players operation angular_z int += vec_z int"""
+main()
