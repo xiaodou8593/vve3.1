@@ -1,0 +1,11 @@
+#vve:solid_box/doc.mcfo
+
+# solid_box临时对象
+_this:{
+	l:<vve_solid_box_l,int,1w>,
+	center:{
+		<vve_solid_box_x,int,1w>,
+		<vve_solid_box_y,int,1w>,
+		<vve_solid_box_z,int,1w>
+	}
+}

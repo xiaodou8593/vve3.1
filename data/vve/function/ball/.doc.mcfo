@@ -1,0 +1,11 @@
+#vve:ball/doc.mcfo
+
+# ball临时对象
+_this:{
+	radius:<vve_ball_r,int,1w>,
+	center:{
+		<vve_ball_x,int,1w>,
+		<vve_ball_y,int,1w>,
+		<vve_ball_z,int,1w>
+	}
+}
