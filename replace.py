@@ -38,36 +38,18 @@ def main():
 
 
 # 旧内容（严格按您提供的格式，保留原换行和缩进）
-OLD_CONTENT = """scoreboard players operation sstemp_x int = vec_x int
-scoreboard players operation sstemp_y int = vec_y int
-scoreboard players operation sstemp_z int = vec_z int
-scoreboard players operation vec_x int /= inertia int
-scoreboard players operation vec_y int /= inertia int
-scoreboard players operation vec_z int /= inertia int
-scoreboard players operation sstemp_x int %= inertia int
-scoreboard players operation sstemp_y int %= inertia int
-scoreboard players operation sstemp_z int %= inertia int
-scoreboard players operation vec_x int *= 10000 int
-scoreboard players operation vec_y int *= 10000 int
-scoreboard players operation vec_z int *= 10000 int
-scoreboard players operation sstemp_x int *= 10000 int
-scoreboard players operation sstemp_y int *= 10000 int
-scoreboard players operation sstemp_z int *= 10000 int
-scoreboard players operation sstemp_x int /= inertia int
-scoreboard players operation sstemp_y int /= inertia int
-scoreboard players operation sstemp_z int /= inertia int
-scoreboard players operation vec_x int += sstemp_x int
-scoreboard players operation vec_y int += sstemp_y int
-scoreboard players operation vec_z int += sstemp_z int
-scoreboard players operation angular_x int += vec_x int
-scoreboard players operation angular_y int += vec_y int
-scoreboard players operation angular_z int += vec_z int"""
+OLD_CONTENT = """# 计算沿法线反方向的速度
+scoreboard players operation stemp_v int = c_vx int
+scoreboard players operation stemp_v int *= nvec_x int
+scoreboard players operation stemp_0 int = c_vy int
+scoreboard players operation stemp_0 int *= nvec_y int
+scoreboard players operation stemp_v int += stemp_0 int
+scoreboard players operation stemp_0 int = c_vz int
+scoreboard players operation stemp_0 int *= nvec_z int
+scoreboard players operation stemp_v int += stemp_0 int
+scoreboard players operation stemp_v int /= -10000 int"""
 
 # 新内容
-NEW_CONTENT = """execute store result score vec_x int run compute default float vve:object/_apply_couple_x 10000
-execute store result score vec_y int run compute default float vve:object/_apply_couple_y 10000
-execute store result score vec_z int run compute default float vve:object/_apply_couple_z 10000
-scoreboard players operation angular_x int += vec_x int
-scoreboard players operation angular_y int += vec_y int
-scoreboard players operation angular_z int += vec_z int"""
+NEW_CONTENT = """# 计算沿法线反方向的速度
+execute store result score stemp_v int run compute default float vve:object/_calc_stemp_v -10000"""
 main()

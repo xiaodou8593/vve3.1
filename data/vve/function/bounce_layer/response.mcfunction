@@ -1,25 +1,6 @@
-#$(module_prefix)response
-# $(module_prefix)check_material调用
+#vve:bounce_layer/response
+# 可复用
 
-# 响应信号
-scoreboard players operation material_response int = @s vve_material_type
-
-scoreboard players operation sstemp_abs_u int *= -1 int
-scoreboard players operation sstemp_abs_v int *= -1 int
-scoreboard players operation sstemp_abs_w int *= -1 int
-scoreboard players operation sstemp_abs_u int += sstemp_s0 int
-scoreboard players operation sstemp_abs_v int += sstemp_s1 int
-scoreboard players operation sstemp_abs_w int += sstemp_s2 int
-
-execute if score sstemp_abs_u int <= sstemp_abs_v int run function vve:cube/response_branch_0
-execute if score sstemp_abs_u int > sstemp_abs_v int run function vve:cube/response_branch_1
-
-# 计算沿法线反方向的速度
-execute store result score stemp_v int run compute default float vve:object/_calc_stemp_v -10000
-# 附着层响应
-execute if score grab_depth int <= grab_depth_max int \
-	if score stemp_v int <= grab_layer_v int \
-	run return run function vve:cube/grab_layer_response
 # 实心层反弹
 scoreboard players set bounce_layer_response int 1
 # 取消附着层响应
@@ -41,6 +22,9 @@ scoreboard players operation shift_z int *= stemp_depth int
 scoreboard players operation shift_x int /= 10000 int
 scoreboard players operation shift_y int /= 10000 int
 scoreboard players operation shift_z int /= 10000 int
+
+# 脱离速度忽略
+execute if score stemp_v int matches ..-1 run return fail
 
 # 施加反弹冲量
 scoreboard players set impulse_response int 1
@@ -94,7 +78,3 @@ scoreboard players operation impulse_fz int *= c_mass int
 scoreboard players operation impulse_fx int += stemp_x int
 scoreboard players operation impulse_fy int += stemp_y int
 scoreboard players operation impulse_fz int += stemp_z int
-
-execute unless entity @s[tag=vve_impulse_receiver] run return fail
-function vve:impulse/_model
-data modify entity @s data.impulse_receiver append from storage vve:io result

@@ -65,15 +65,7 @@ execute store result storage vve:io ry int 1 run scoreboard players get stemp_ry
 execute store result storage vve:io rz int 1 run scoreboard players get stemp_rz int
 function vve:solid/search with storage vve:io {}
 # 计算沿法线反方向的速度
-scoreboard players operation stemp_v int = c_vx int
-scoreboard players operation stemp_v int *= nvec_x int
-scoreboard players operation stemp_0 int = c_vy int
-scoreboard players operation stemp_0 int *= nvec_y int
-scoreboard players operation stemp_v int += stemp_0 int
-scoreboard players operation stemp_0 int = c_vz int
-scoreboard players operation stemp_0 int *= nvec_z int
-scoreboard players operation stemp_v int += stemp_0 int
-scoreboard players operation stemp_v int /= -10000 int
+execute store result score stemp_v int run compute default float vve:object/_calc_stemp_v -10000
 # 附着层响应
 execute if score grab_depth int <= grab_depth_max int run return run function vve:grab_layer/response_material
 # 实心层反弹
