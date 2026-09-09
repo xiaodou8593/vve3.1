@@ -1,0 +1,25 @@
+{
+	"type":"mul",
+	"inputs":[
+		{
+			"type":"div",
+			"left":1.0,
+			"right":{
+				"type":"storage",
+				"storage":"math:io",
+				"path":"sstemp_len"
+			}
+		},
+		{
+			"type":"from_int",
+			"input":{
+				"type":"score",
+				"target":{
+					"type":"fixed",
+					"name":"vz"
+				},
+				"score":"int"
+			}
+		}
+	]
+}

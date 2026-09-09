@@ -1,0 +1,39 @@
+{
+	"type":"length",
+	"inputs":[
+
+			{
+				"type":"from_int",
+				"input":{
+					"type":"score",
+					"target":{
+						"type":"fixed",
+						"name":"vx"
+					},
+					"score":"int"
+				}
+			},
+			{
+				"type":"from_int",
+				"input":{
+					"type":"score",
+					"target":{
+						"type":"fixed",
+						"name":"vy"
+					},
+					"score":"int"
+				}
+			},
+			{
+				"type":"from_int",
+				"input":{
+					"type":"score",
+					"target":{
+						"type":"fixed",
+						"name":"vz"
+					},
+					"score":"int"
+				}
+			}
+	]
+}
