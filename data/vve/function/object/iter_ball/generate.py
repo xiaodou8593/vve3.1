@@ -3,12 +3,15 @@ cnt_to_coord = [(-1,-1,-1),(-1,-1,1),(-1,1,-1),(-1,1,1),(1,-1,-1),(1,-1,1),(1,1,
 coord_solid = {}
 not_vis_coords = []
 
+def shift_coord(coord,shift):
+    return tuple(coord[i]+shift[i] for i in range(3))
+
 def adj_init(n):
     global coord_solid, not_vis_coords,cnt_to_coord
     coord_solid = {}
     not_vis_coords = []
     cnt = 0
-    while n>0:
+    while cnt<8:
         if n%2==1:
             coord_solid[cnt_to_coord[cnt]] = True
             not_vis_coords.append(cnt_to_coord[cnt])
@@ -35,3 +38,6 @@ for i in range(256):
         f.write(f"""vve:object/iter_ball/{n_to_filename(i)}
 # vve:object/iter_ball/search调用
 """)
+    while not_vis_coords:
+        coord = not_vis_coords.pop()
+        pass
