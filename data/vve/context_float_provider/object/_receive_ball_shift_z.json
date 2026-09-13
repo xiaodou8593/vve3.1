@@ -1,0 +1,22 @@
+{
+	"type":"mul",
+	"inputs":[
+		0.0001,
+		{
+			"type":"storage",
+			"storage":"vve:io",
+			"path":"stemp"
+		},
+		{
+			"type":"from_int",
+			"input":{
+				"type":"score",
+				"target":{
+					"type":"fixed",
+					"name":"nvec_z"
+				},
+				"score":"int"
+			}
+		}
+	]
+}

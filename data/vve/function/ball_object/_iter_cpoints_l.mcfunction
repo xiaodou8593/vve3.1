@@ -1,0 +1,89 @@
+#vve:ball_object/_iter_cpoints_l
+# 遍历顶点作为碰撞点，进行介质探测
+# 输出介质响应(各模块的临时对象)
+# 传入世界实体为执行者(不保证Pos位于执行位置)
+
+# 开始接收介质响应
+function vve:couple/_clear
+function vve:object/_clear_receiver
+
+# 浮力参数
+scoreboard players operation buoyancy_h int = a int
+scoreboard players operation buoyancy_h int *= 2 int
+scoreboard players operation buoyancy_area int = a int
+scoreboard players operation buoyancy_area int /= 100 int
+scoreboard players operation buoyancy_area int *= buoyancy_area int
+scoreboard players operation buoyancy_area int /= 100 int
+
+# 相对坐标组成部分
+# 设置sstemp_i, sstemp_j, sstemp_k
+scoreboard players operation sstemp_ix int *= ivec_x int
+scoreboard players operation sstemp_iy int *= ivec_y int
+scoreboard players operation sstemp_iz int *= ivec_z int
+scoreboard players operation sstemp_jx int *= jvec_x int
+scoreboard players operation sstemp_jy int *= jvec_y int
+scoreboard players operation sstemp_jz int *= jvec_z int
+scoreboard players operation sstemp_kx int *= kvec_x int
+scoreboard players operation sstemp_ky int *= kvec_y int
+scoreboard players operation sstemp_kz int *= kvec_z int
+execute store result score sstemp_rx int run scoreboard players operation sstemp_ix int /= 10000 int
+execute store result score sstemp_ry int run scoreboard players operation sstemp_iy int /= 10000 int
+execute store result score sstemp_rz int run scoreboard players operation sstemp_iz int /= 10000 int
+execute store result score sstemp_sx int run scoreboard players operation sstemp_jx int /= 10000 int
+execute store result score sstemp_sy int run scoreboard players operation sstemp_jy int /= 10000 int
+execute store result score sstemp_sz int run scoreboard players operation sstemp_jz int /= 10000 int
+execute store result score sstemp_tx int run scoreboard players operation sstemp_kx int /= 10000 int
+execute store result score sstemp_ty int run scoreboard players operation sstemp_ky int /= 10000 int
+execute store result score sstemp_tz int run scoreboard players operation sstemp_kz int /= 10000 int
+
+# 线速度叉乘计算
+execute store result score sstempx int run compute default float vve:object/_liner_rx 10000
+execute store result score sstempy int run compute default float vve:object/_liner_ry 10000
+execute store result score sstemp_rz int run compute default float vve:object/_liner_rz 10000
+scoreboard players operation sstemp_rx int = sstempx int
+scoreboard players operation sstemp_ry int = sstempy int
+
+execute store result score sstempx int run compute default float vve:object/_liner_sx 10000
+execute store result score sstempy int run compute default float vve:object/_liner_sy 10000
+execute store result score sstemp_sz int run compute default float vve:object/_liner_sz 10000
+scoreboard players operation sstemp_sx int = sstempx int
+scoreboard players operation sstemp_sy int = sstempy int
+
+execute store result score sstempx int run compute default float vve:object/_liner_tx 10000
+execute store result score sstempy int run compute default float vve:object/_liner_ty 10000
+execute store result score sstemp_tz int run compute default float vve:object/_liner_tz 10000
+scoreboard players operation sstemp_tx int = sstempx int
+scoreboard players operation sstemp_ty int = sstempy int
+
+# 设置cpoint质量
+scoreboard players operation c_mass int = mass int
+
+# 顶点1介质探测
+scoreboard players operation c_x int = sstemp_jx int
+scoreboard players operation c_y int = sstemp_jy int
+scoreboard players operation c_z int = sstemp_jz int
+execute store result storage math:io xyz[0] double 0.0001 run scoreboard players operation c_x int += x int
+execute store result storage math:io xyz[1] double 0.0001 run scoreboard players operation c_y int += y int
+execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation c_z int += z int
+scoreboard players operation c_vx int = sstemp_sx int
+scoreboard players operation c_vy int = sstemp_sy int
+scoreboard players operation c_vz int = sstemp_sz int
+scoreboard players operation c_vx int += vx int
+scoreboard players operation c_vy int += vy int
+scoreboard players operation c_vz int += vz int
+data modify entity @s Pos set from storage math:io xyz
+execute at @s run function vve:_detect_liquid
+execute if score bounce_layer_response int matches 1 run function vve:object/_receive_bounce_layer
+execute if score grab_layer_response int matches 1 run function vve:object/_receive_grab_layer
+scoreboard players operation friction_receiver_response int < friction_response int
+execute if score shift_response int matches 1 run function vve:object/_receive_shift
+execute if score impulse_response int matches 1 run function vve:object/_dec_impulse
+
+# ...
+
+# 结束接受介质响应
+function vve:object/_receive_over
+function vve:couple/_add_over
+
+# 区块安全
+tp @s 0 0 0

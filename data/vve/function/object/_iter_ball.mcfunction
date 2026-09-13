@@ -5,12 +5,18 @@
 
 # 计算速度大小和方向
 function vve:object/velocity/_norm
-execute store result score stemp_len int run data get storage math:io sstemp_len 10000
+execute store result score stemp_len int run data get storage math:io sstemp_len
 
-# 输入碰撞点速度
-scoreboard players operation c_vx int = vx int
-scoreboard players operation c_vy int = vy int
-scoreboard players operation c_vz int = vz int
+scoreboard players operation c_mass int = mass int
+
+# 开始接收介质响应
+function vve:couple/_clear
+function vve:object/_clear_receiver
+
+scoreboard players set ball_receiver_sx int 0
+scoreboard players set ball_receiver_sy int 0
+scoreboard players set ball_receiver_sz int 0
+scoreboard players set ball_receiver_res int 0
 
 # 计算上一刻的位置并获取方块检测中心
 execute store result score stemp_x_mod int run scoreboard players operation stemp_x int = vve_ball_x int
@@ -27,3 +33,13 @@ execute store result storage math:io xyz[1] double 0.0001 run scoreboard players
 execute store result storage math:io xyz[2] double 0.0001 run scoreboard players operation stemp_z int -= stemp_z_mod int
 data modify entity @s Pos set from storage math:io xyz
 execute at @s run function vve:object/iter_ball/detect_block
+
+# 结束接受介质响应
+function vve:object/_receive_over
+function vve:couple/_add_over
+
+# 位置回退
+execute if score ball_receiver_res int matches 1 run function vve:object/iter_ball/move_back
+
+# 区块安全
+tp @s 0 0 0

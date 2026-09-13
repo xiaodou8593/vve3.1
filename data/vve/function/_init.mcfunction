@@ -50,6 +50,7 @@ function vve:slope_xp/init
 function vve:slope_xn/init
 function vve:slope_zp/init
 function vve:slope_zn/init
+function vve:ball_object/init
 
 # 初始化记录
 function vve:_version

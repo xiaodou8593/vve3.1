@@ -1,7 +1,7 @@
 #vve:object/iter_ball/detect_block
 # vve:object/_iter_ball调用
 
-data modify storage vve:io temp set value {ppp:1b,ppn:1b,pnp:1b,pnn:1b,npp:1n,npn:1b,nnp:1b,nnn:1b}
+data modify storage vve:io temp set value {ppp:1b,ppn:1b,pnp:1b,pnn:1b,npp:1b,npn:1b,nnp:1b,nnn:1b}
 
 execute if block ~0.5 ~0.5 ~0.5 #vve:pass run data modify storage vve:io temp.ppp set value 0b
 execute if block ~0.5 ~0.5 ~-0.5 #vve:pass run data modify storage vve:io temp.ppn set value 0b

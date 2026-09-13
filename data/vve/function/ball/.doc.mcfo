@@ -7,5 +7,10 @@ _this:{
 		<vve_ball_x,int,1w>,
 		<vve_ball_y,int,1w>,
 		<vve_ball_z,int,1w>
+	},
+	velocity:{
+		<vve_ball_vx,int,1w>,
+		<vve_ball_vy,int,1w>,
+		<vve_ball_vz,int,1w>
 	}
 }

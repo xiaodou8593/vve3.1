@@ -1,0 +1,17 @@
+#vve:ball_object/_regular
+# 规整化姿态，消除法向角速度
+# 输入nvec{...}
+# 输入receiver{...}
+# 需要传入世界实体为执行者
+
+function math:uvw/_nvec_to
+scoreboard players set cos int -2147483648
+# 设置各面法向量
+scoreboard players set sstemp_n1_x int 5773
+scoreboard players set sstemp_n1_y int 5773
+scoreboard players set sstemp_n1_z int 5773
+# 与各面法向量点乘
+execute store result score sstemp_d1 int run compute default float vve:object/regular/_dot_sstemp_n1 10000
+scoreboard players operation cos int > sstemp_d1 int
+# 选择贴合面
+execute if score cos int = sstemp_d1 int run return run function vve:object/regular/surface_1
