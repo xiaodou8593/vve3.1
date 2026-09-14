@@ -23,11 +23,6 @@ scoreboard players operation shift_x int /= 10000 int
 scoreboard players operation shift_y int /= 10000 int
 scoreboard players operation shift_z int /= 10000 int
 
-#tellraw @a "bounce_layer_response"
-#function vve:object/iter_ball/_print_cache with storage vve:io temp
-#function math:nvec/_print
-#function vve:shift/_print
-
 # 脱离速度忽略
 execute if score stemp_v int matches ..-1 run return fail
 
