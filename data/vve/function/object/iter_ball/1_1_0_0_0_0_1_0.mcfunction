@@ -1,7 +1,7 @@
 #vve:object/iter_ball/1_1_0_0_0_0_1_0
 # vve:object/iter_ball/search调用
 
-# build_size_2:((1, 1, 1))
+# build_size_2:((2, 2, 0))
 scoreboard players set vve_solid_box_l int 10000
 scoreboard players set vve_solid_box_x int 10000
 scoreboard players set vve_solid_box_y int 10000

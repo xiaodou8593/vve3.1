@@ -7,16 +7,28 @@
 			{
 				"type":"div",
 				"left":{
-					"type":"storage",
-					"storage":"vve:io",
-					"path":"stemp"
+					"type":"from_int",
+					"input":{
+						"type":"score",
+						"target":{
+							"type":"fixed",
+							"name":"sstemp_sz"
+						},
+						"score":"int"
+					}
 				},
 				"right":{
 					"type":"abs",
 					"input":{
-						"type":"storage",
-						"storage":"vve:io",
-						"path":"stemp"
+						"type":"from_int",
+						"input":{
+							"type":"score",
+							"target":{
+								"type":"fixed",
+								"name":"sstemp_sz"
+							},
+							"score":"int"
+						}
 					}
 				}
 			},

@@ -53,7 +53,7 @@ def build_size_2(center):
     global filename, index
     with open(filename, 'a', encoding='utf-8') as f:
         f.write(f"""
-# build_size_2:({coord})
+# build_size_2:({center})
 scoreboard players set vve_solid_box_l int 10000
 scoreboard players set vve_solid_box_x int {center[0]*5000}
 scoreboard players set vve_solid_box_y int {center[1]*5000}

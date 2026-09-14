@@ -7,7 +7,9 @@ function vve:ball_object/init
 # 测试场地
 execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
 execute at @e[tag=math_marker,limit=1] run fill ~-2 ~ ~-2 ~6 ~5 ~2 air
-execute at @e[tag=math_marker,limit=1] run fill ~-2 ~-1 ~-2 ~6 ~-1 ~2 grass_block
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~-1 ~-2 ~9 ~-1 ~2 grass_block
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~ ~-2 ~5 ~ ~2 grass_block
+execute at @e[tag=math_marker,limit=1] run fill ~-2 ~1 ~-2 ~4 ~1 ~2 grass_block
 
 tag @e[tag=test] remove test
 

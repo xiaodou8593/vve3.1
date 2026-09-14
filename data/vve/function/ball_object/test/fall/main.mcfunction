@@ -14,6 +14,9 @@ scoreboard players set @s killtime 10
 execute if score test int matches -1 run function vve:ball_object/main_c
 execute if score test int matches 0 run function vve:ball_object/main_sync
 
+execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos
+execute if score test_n int matches 45 at @e[tag=math_marker,limit=1] run setblock ~ ~ ~ glass
+
 execute if score test int matches -1 run scoreboard players add test_n int 1
 #execute if score test int matches -1 run tellraw @a ["test_n: ", {"score":{"name":"test_n","objective":"int"}}]
 #execute if score test int matches -1 run scoreboard players set test int 0

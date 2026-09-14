@@ -12,7 +12,7 @@ scoreboard players set @s killtime 10
 #function vve:ball_object/test/push/store_frame with storage vve:io {}
 
 function vve:ball_object/main_c
-scoreboard players set inp int 7500
+scoreboard players set inp int 3800
 execute if score test_n int matches 60..72 at @s positioned ~-1 ~0.5 ~ rotated -90.0 0.0 run function vve:ball_object/_poke_here_i_as
 execute as 0-0-0-0-0 run function vve:impulse/_render
 

@@ -149,5 +149,5 @@ execute if score stemp_v int matches ..-1 run return run \
 	execute store result score res int run \
 	scoreboard players set grab_layer_response int 0
 # 附着层响应
-execute if score grab_depth int <= grab_depth_max int run return run function vve:grab_layer/response
+execute if score grab_depth int <= grab_depth_max int if score stemp_v int <= grab_layer_v int run return run function vve:grab_layer/response
 function vve:bounce_layer/response

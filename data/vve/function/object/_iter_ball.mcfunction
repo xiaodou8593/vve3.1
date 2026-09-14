@@ -19,9 +19,12 @@ scoreboard players set ball_receiver_sz int 0
 scoreboard players set ball_receiver_res int 0
 
 # 计算上一刻的位置并获取方块检测中心
-execute store result score stemp_x_mod int run scoreboard players operation stemp_x int = vve_ball_x int
-execute store result score stemp_y_mod int run scoreboard players operation stemp_y int = vve_ball_y int
-execute store result score stemp_z_mod int run scoreboard players operation stemp_z int = vve_ball_z int
+scoreboard players operation stemp_x int = vve_ball_x int
+scoreboard players operation stemp_y int = vve_ball_y int
+scoreboard players operation stemp_z int = vve_ball_z int
+execute store result score stemp_x_mod int run scoreboard players operation stemp_x int += vx int
+execute store result score stemp_y_mod int run scoreboard players operation stemp_y int += vy int
+execute store result score stemp_z_mod int run scoreboard players operation stemp_z int += vz int
 scoreboard players operation stemp_x_mod int %= 10000 int
 scoreboard players operation stemp_y_mod int %= 10000 int
 scoreboard players operation stemp_z_mod int %= 10000 int

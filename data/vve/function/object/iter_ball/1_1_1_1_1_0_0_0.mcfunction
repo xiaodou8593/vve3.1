@@ -1,7 +1,7 @@
 #vve:object/iter_ball/1_1_1_1_1_0_0_0
 # vve:object/iter_ball/search调用
 
-# build_size_2:((1, 1, 1))
+# build_size_2:((2, 0, 0))
 scoreboard players set vve_solid_box_l int 10000
 scoreboard players set vve_solid_box_x int 10000
 scoreboard players set vve_solid_box_y int 0
@@ -18,7 +18,7 @@ scoreboard players operation friction_receiver_response int < friction_response 
 execute if score shift_response int matches 1 run function vve:object/_receive_shift
 execute if score impulse_response int matches 1 run function vve:object/_dec_impulse
 
-# build_size_2:((-1, 1, 1))
+# build_size_2:((0, 2, 2))
 scoreboard players set vve_solid_box_l int 10000
 scoreboard players set vve_solid_box_x int 0
 scoreboard players set vve_solid_box_y int 10000
