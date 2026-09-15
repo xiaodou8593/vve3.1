@@ -7,6 +7,7 @@
 # 输出介质响应(各模块的临时对象)
 # 输出<sstemp_s,int,1w>
 # 输出<res,int>
+# 输出vve:cpoint{...}
 # 传入世界实体为执行者
 
 function math:box/_push

@@ -1,0 +1,7 @@
+{
+	"type":"minecraft:float_value_check",
+	"value":"vve:block/_cpoint_inside",
+	"test":{
+		"max":0.0
+	}
+}
