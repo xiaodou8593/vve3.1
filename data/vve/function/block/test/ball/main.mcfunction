@@ -18,4 +18,4 @@ execute if score test int matches -1 run function vve:block/main_ball
 #execute as 0-0-0-0-0 run function vve:impulse/_render
 
 scoreboard players add test_n int 1
-scoreboard players set test int 0
+#scoreboard players set test int 0
