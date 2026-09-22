@@ -10,21 +10,21 @@
 # 输出vve:cpoint{...}
 # 传入世界实体为执行者
 
-function math:box/_push
-scoreboard players operation x int = vve_solid_box_x int
-scoreboard players operation y int = vve_solid_box_y int
-scoreboard players operation z int = vve_solid_box_z int
-scoreboard players operation d int = vve_solid_box_l int
-scoreboard players operation h int = vve_solid_box_l int
-scoreboard players operation h int *= 2 int
-scoreboard players operation l int = vve_solid_box_l int
-scoreboard players operation y int -= vve_solid_box_l int
-scoreboard players operation d int *= 100 int
-scoreboard players operation h int *= 100 int
-scoreboard players operation l int *= 100 int
-function math:box/_model
-data modify storage math:io list append from storage math:io result
-function math:box/_pop
+#function math:box/_push
+#scoreboard players operation x int = vve_solid_box_x int
+#scoreboard players operation y int = vve_solid_box_y int
+#scoreboard players operation z int = vve_solid_box_z int
+#scoreboard players operation d int = vve_solid_box_l int
+#scoreboard players operation h int = vve_solid_box_l int
+#scoreboard players operation h int *= 2 int
+#scoreboard players operation l int = vve_solid_box_l int
+#scoreboard players operation y int -= vve_solid_box_l int
+#scoreboard players operation d int *= 100 int
+#scoreboard players operation h int *= 100 int
+#scoreboard players operation l int *= 100 int
+#function math:box/_model
+#data modify storage math:io list append from storage math:io result
+#function math:box/_pop
 
 # 各模块响应信号重置
 scoreboard players set shift_response int 0
