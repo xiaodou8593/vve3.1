@@ -20,4 +20,4 @@ execute if score loop int matches 1.. as 0-0-0-0-0 run function vve:block/test/b
 #execute as 0-0-0-0-0 run function vve:impulse/_render
 
 scoreboard players add test_n int 1
-scoreboard players set test int 0
+#scoreboard players set test int 0
