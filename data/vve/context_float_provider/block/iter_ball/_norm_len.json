@@ -1,0 +1,39 @@
+{
+	"type":"length",
+	"inputs":[
+
+			{
+				"type":"from_int",
+				"input":{
+					"type":"score",
+					"target":{
+						"type":"fixed",
+						"name":"sstemp_bvx"
+					},
+					"score":"int"
+				}
+			},
+			{
+				"type":"from_int",
+				"input":{
+					"type":"score",
+					"target":{
+						"type":"fixed",
+						"name":"sstemp_bvy"
+					},
+					"score":"int"
+				}
+			},
+			{
+				"type":"from_int",
+				"input":{
+					"type":"score",
+					"target":{
+						"type":"fixed",
+						"name":"sstemp_bvz"
+					},
+					"score":"int"
+				}
+			}
+	]
+}

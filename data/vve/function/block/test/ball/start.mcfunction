@@ -14,8 +14,9 @@ tag @e[tag=test] remove test
 # 生成测试程序实体
 data modify storage vve:io input set from storage vve:class block_plate
 function vve:block/_proj
+scoreboard players set a int 5000
+scoreboard players set inertia int 800
 execute as @e[tag=math_marker,limit=1] at @s positioned ~ ~4 ~ rotated 0.0 0.0 run function vve:object/_anchor_to
-scoreboard players set inertia int 100
 function vve:block/_model
 data modify storage vve:io input set from storage vve:io result
 data modify entity @e[tag=math_marker,limit=1] Pos set from storage vve:io input.center
@@ -40,4 +41,4 @@ scoreboard players set test_n int 0
 
 # 设置旋转
 execute as @e[tag=result,limit=1] at @s positioned ~15.0 ~ ~ run function vve:object/_rotate_here_as
-#execute as @e[tag=result,limit=1] at @s positioned ~5.0 ~5.0 ~5.0 run function vve:object/_rotate_here_as
+#execute as @e[tag=result,limit=1] at @s positioned ~10.0 ~10.0 ~10.0 run function vve:object/_rotate_here_as

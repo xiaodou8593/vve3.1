@@ -1,0 +1,56 @@
+#vve:block/_regular_ball
+# 规整化姿态，消除法向角速度
+# 输入nvec{...}
+# 输入receiver{...}
+# 需要传入世界实体为执行者
+
+execute if score angular_len int matches 1200.. run return fail
+
+function math:uvw/_nvec_to
+scoreboard players set cos int -2147483648
+# 设置各面法向量
+scoreboard players set sstemp_n1_x int 10000
+scoreboard players set sstemp_n1_y int 0
+scoreboard players set sstemp_n1_z int 0
+
+scoreboard players set sstemp_n2_x int -10000
+scoreboard players set sstemp_n2_y int 0
+scoreboard players set sstemp_n2_z int 0
+
+scoreboard players set sstemp_n3_x int 0
+scoreboard players set sstemp_n3_y int 10000
+scoreboard players set sstemp_n3_z int 0
+
+scoreboard players set sstemp_n4_x int 0
+scoreboard players set sstemp_n4_y int -10000
+scoreboard players set sstemp_n4_z int 0
+
+scoreboard players set sstemp_n5_x int 0
+scoreboard players set sstemp_n5_y int 0
+scoreboard players set sstemp_n5_z int 10000
+
+scoreboard players set sstemp_n6_x int 0
+scoreboard players set sstemp_n6_y int 0
+scoreboard players set sstemp_n6_z int -10000
+
+# 与各面法向量点乘
+execute store result score sstemp_d1 int run compute default float vve:object/regular/_dot_sstemp_n1 10000
+execute store result score sstemp_d2 int run compute default float vve:object/regular/_dot_sstemp_n2 10000
+execute store result score sstemp_d3 int run compute default float vve:object/regular/_dot_sstemp_n3 10000
+execute store result score sstemp_d4 int run compute default float vve:object/regular/_dot_sstemp_n4 10000
+execute store result score sstemp_d5 int run compute default float vve:object/regular/_dot_sstemp_n5 10000
+execute store result score sstemp_d6 int run compute default float vve:object/regular/_dot_sstemp_n6 10000
+scoreboard players operation cos int > sstemp_d1 int
+scoreboard players operation cos int > sstemp_d2 int
+scoreboard players operation cos int > sstemp_d3 int
+scoreboard players operation cos int > sstemp_d4 int
+scoreboard players operation cos int > sstemp_d5 int
+scoreboard players operation cos int > sstemp_d6 int
+
+# 余弦值阈值
+execute if score cos int matches ..9950 run return fail
+
+# 选择贴合面
+function vve:object/regular/branch_6
+
+function vve:object/_regular_angular

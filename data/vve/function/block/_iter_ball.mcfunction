@@ -1,6 +1,5 @@
 #vve:object/_iter_ball
 # 球体介质探测算法
-# 输入vve:ball{...}
 # 需要传入世界实体为执行者
 
 # 计算速度大小和方向
@@ -18,13 +17,19 @@ scoreboard players set ball_receiver_sy int 0
 scoreboard players set ball_receiver_sz int 0
 scoreboard players set ball_receiver_res int 0
 
-# 计算上一刻的位置并获取方块检测中心
-scoreboard players operation stemp_x int = vve_ball_x int
-scoreboard players operation stemp_y int = vve_ball_y int
-scoreboard players operation stemp_z int = vve_ball_z int
-execute store result score stemp_x_mod int run scoreboard players operation stemp_x int += vx int
-execute store result score stemp_y_mod int run scoreboard players operation stemp_y int += vy int
-execute store result score stemp_z_mod int run scoreboard players operation stemp_z int += vz int
+# 顶点1
+scoreboard players operation vve_ball_vx int = vx int
+scoreboard players operation vve_ball_vy int = vy int
+scoreboard players operation vve_ball_vz int = vz int
+scoreboard players operation vve_ball_r int = a int
+scoreboard players operation vve_ball_r int *= 362 int
+scoreboard players operation vve_ball_r int /= 209 int
+execute store result score stemp_x_mod int store result score stemp_x int run scoreboard players operation vve_ball_x int = x int
+execute store result score stemp_y_mod int store result score stemp_y int run scoreboard players operation vve_ball_y int = y int
+execute store result score stemp_z_mod int store result score stemp_z int run scoreboard players operation vve_ball_z int = z int
+scoreboard players operation vve_ball_x int -= vx int
+scoreboard players operation vve_ball_y int -= vy int
+scoreboard players operation vve_ball_z int -= vz int
 scoreboard players operation stemp_x_mod int %= 10000 int
 scoreboard players operation stemp_y_mod int %= 10000 int
 scoreboard players operation stemp_z_mod int %= 10000 int

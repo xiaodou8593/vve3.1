@@ -3,6 +3,7 @@
 
 data modify storage vve:io input set from storage math:io list[0]
 function vve:impulse/_proj
+execute if score test int matches -1 run function vve:impulse/_print
 scoreboard players operation impulse_fx int /= mass int
 scoreboard players operation impulse_fy int /= mass int
 scoreboard players operation impulse_fz int /= mass int

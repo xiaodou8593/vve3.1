@@ -17,9 +17,9 @@ execute if score v int matches ..-1 run function vve:block/receive_ball/branch_3
 execute if score w int matches 1.. run function vve:block/receive_ball/branch_4
 execute if score w int matches ..-1 run function vve:block/receive_ball/branch_5
 
-#tellraw @a ["inp: ", {"score":{"name":"inp","objective":"int"}}]
-#function math:nvec/_print
-#scoreboard players set test int 1
+scoreboard players set grab_layer_response int 0
+scoreboard players set bounce_layer_response int 1
+execute if score inp int <= grab_depth_max int if score grab_layer_receiver_v_norm int < grab_layer_regular_v int run scoreboard players operation grab_layer_response int >< bounce_layer_response int
 
 execute store result score sstemp_sx int run compute default float math:nvec/_scale_x 10000
 execute store result score sstemp_sy int run compute default float math:nvec/_scale_y 10000
@@ -59,6 +59,3 @@ execute if score grab_layer_response int matches 1 run function vve:object/_rece
 scoreboard players operation friction_receiver_response int < friction_response int
 #execute if score shift_response int matches 1 run function vve:object/_receive_shift
 execute if score impulse_response int matches 1 run function vve:object/_dec_impulse
-
-function vve:impulse/_model
-data modify storage math:io list append from storage vve:io result

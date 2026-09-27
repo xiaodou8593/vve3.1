@@ -6,16 +6,7 @@ function vve:ball_object/_get
 # 运动学迭代
 execute as 0-0-0-0-0 run function vve:object/_iter_motion
 # 介质探测
-scoreboard players operation vve_ball_x int = x int
-scoreboard players operation vve_ball_y int = y int
-scoreboard players operation vve_ball_z int = z int
-scoreboard players operation vve_ball_x int -= vx int
-scoreboard players operation vve_ball_y int -= vy int
-scoreboard players operation vve_ball_z int -= vz int
-scoreboard players operation vve_ball_vx int = vx int
-scoreboard players operation vve_ball_vy int = vy int
-scoreboard players operation vve_ball_vz int = vz int
-execute as 0-0-0-0-0 run function vve:object/_iter_ball
+execute as 0-0-0-0-0 run function vve:ball_object/_iter_ball_step
 # 力学迭代
 scoreboard players operation vy int -= vve_gravity int
 # 介质响应

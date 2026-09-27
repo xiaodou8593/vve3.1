@@ -10,22 +10,6 @@
 # 输出vve:cpoint{...}
 # 传入世界实体为执行者
 
-#function math:box/_push
-#scoreboard players operation x int = vve_solid_box_x int
-#scoreboard players operation y int = vve_solid_box_y int
-#scoreboard players operation z int = vve_solid_box_z int
-#scoreboard players operation d int = vve_solid_box_l int
-#scoreboard players operation h int = vve_solid_box_l int
-#scoreboard players operation h int *= 2 int
-#scoreboard players operation l int = vve_solid_box_l int
-#scoreboard players operation y int -= vve_solid_box_l int
-#scoreboard players operation d int *= 100 int
-#scoreboard players operation h int *= 100 int
-#scoreboard players operation l int *= 100 int
-#function math:box/_model
-#data modify storage math:io list append from storage math:io result
-#function math:box/_pop
-
 # 各模块响应信号重置
 scoreboard players set shift_response int 0
 scoreboard players set impulse_response int 0
@@ -135,30 +119,21 @@ execute if score sstemp_r int matches 0 run function vve:solid_box/detect_ball_i
 execute if score sstemp_r int matches 1.. run function vve:solid_box/detect_ball_outside
 
 # 计算作用点和线速度
-scoreboard players operation c_x int = sstemp_sx int
-scoreboard players operation c_y int = sstemp_sy int
-scoreboard players operation c_z int = sstemp_sz int
-execute store result score sstemp_nx int run compute default float vve:solid_box/_scale_nx
-execute store result score sstemp_ny int run compute default float vve:solid_box/_scale_ny
-execute store result score sstemp_nz int run compute default float vve:solid_box/_scale_nz
-scoreboard players operation c_x int -= sstemp_nx int
-scoreboard players operation c_y int -= sstemp_ny int
-scoreboard players operation c_z int -= sstemp_nz int
-scoreboard players operation c_x int += vve_solid_box_x int
-scoreboard players operation c_y int += vve_solid_box_y int
-scoreboard players operation c_z int += vve_solid_box_z int
-scoreboard players operation c_x int -= vve_ball_x int
-scoreboard players operation c_y int -= vve_ball_y int
-scoreboard players operation c_z int -= vve_ball_z int
+execute store result score c_x int run compute default float vve:solid_box/_scale_nx -1
+execute store result score c_y int run compute default float vve:solid_box/_scale_ny -1
+execute store result score c_z int run compute default float vve:solid_box/_scale_nz -1
 execute store result score c_vx int run compute default float vve:solid_box/_calc_cx 10000
 execute store result score c_vy int run compute default float vve:solid_box/_calc_cy 10000
 execute store result score c_vz int run compute default float vve:solid_box/_calc_cz 10000
+scoreboard players operation c_x int += sstemp_sx int
+scoreboard players operation c_y int += sstemp_sy int
+scoreboard players operation c_z int += sstemp_sz int
+scoreboard players operation c_x int += vve_solid_box_x int
+scoreboard players operation c_y int += vve_solid_box_y int
+scoreboard players operation c_z int += vve_solid_box_z int
 scoreboard players operation c_vx int += vve_ball_vx int
 scoreboard players operation c_vy int += vve_ball_vy int
 scoreboard players operation c_vz int += vve_ball_vz int
-scoreboard players operation c_x int += vve_ball_x int
-scoreboard players operation c_y int += vve_ball_y int
-scoreboard players operation c_z int += vve_ball_z int
 
 # 计算沿法线反方向的速度
 execute store result score stemp_v int run compute default float vve:object/_calc_stemp_v -10000

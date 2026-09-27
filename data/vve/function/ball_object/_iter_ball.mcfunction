@@ -1,7 +1,17 @@
-#vve:object/_iter_ball
+#vve:ball_object/_iter_ball
 # 球体介质探测算法
 # 输入vve:ball{...}
 # 需要传入世界实体为执行者
+
+scoreboard players operation vve_ball_x int = x int
+scoreboard players operation vve_ball_y int = y int
+scoreboard players operation vve_ball_z int = z int
+scoreboard players operation vve_ball_x int -= vx int
+scoreboard players operation vve_ball_y int -= vy int
+scoreboard players operation vve_ball_z int -= vz int
+scoreboard players operation vve_ball_vx int = vx int
+scoreboard players operation vve_ball_vy int = vy int
+scoreboard players operation vve_ball_vz int = vz int
 
 # 计算速度大小和方向
 function vve:object/velocity/_norm
