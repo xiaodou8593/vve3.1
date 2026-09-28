@@ -18,12 +18,8 @@ scoreboard players operation vec_z int -= z int
 scoreboard players operation fvec_x int = impulse_fx int
 scoreboard players operation fvec_y int = impulse_fy int
 scoreboard players operation fvec_z int = impulse_fz int
-tellraw @a "dec impulse"
-function math:vec/_print
-function math:fvec/_print
 # 计算叉乘
 function math:fvec/_cross_vec
-function math:fvec/_print
 
 scoreboard players operation couple_x int -= fvec_x int
 scoreboard players operation couple_y int -= fvec_y int

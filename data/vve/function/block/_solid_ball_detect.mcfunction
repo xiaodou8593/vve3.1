@@ -159,9 +159,9 @@ scoreboard players operation c_z int += sstemp_sz int
 scoreboard players operation c_x int += vve_solid_box_x int
 scoreboard players operation c_y int += vve_solid_box_y int
 scoreboard players operation c_z int += vve_solid_box_z int
-scoreboard players operation c_vx int += vx int
-scoreboard players operation c_vy int += vy int
-scoreboard players operation c_vz int += vz int
+scoreboard players operation c_vx int += vve_ball_vx int
+scoreboard players operation c_vy int += vve_ball_vy int
+scoreboard players operation c_vz int += vve_ball_vz int
 
 # 计算沿法线反方向的速度
 execute store result score stemp_v int run compute default float vve:object/_calc_stemp_v -10000

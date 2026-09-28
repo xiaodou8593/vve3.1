@@ -13,7 +13,6 @@ scoreboard players set @s killtime 10
 
 execute if score test int matches -1 run data modify storage math:io list set value []
 execute if score test int matches -1 run function vve:block/main_ball
-execute if score test_n int matches 16 run scoreboard players set test int 1
 execute store result score loop int run data get storage math:io list
 execute if score loop int matches 1.. as 0-0-0-0-0 run function vve:block/test/ball/render_loop
 scoreboard players set inp int 3500
