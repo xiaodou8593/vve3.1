@@ -5,5 +5,6 @@
 # 输出 @e[tag=result,limit=1]
 
 tag @e[tag=result] remove result
-summon marker ~ ~ ~ {Tags:["vve_point", "result"]}
+summon item_display ~ ~ ~ {Tags:["vve_point", "result"],brightness:{sky:15,block:15},teleport_duration:1,interpolation_duration:1}
 execute as @e[tag=result,limit=1] run function vve:point/set
+execute as @e[tag=result,limit=1] run function vve:point/set_operation

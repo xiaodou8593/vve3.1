@@ -3,6 +3,7 @@
 # vve:slope_xn/check_material调用
 # vve:slope_zp/check_material调用
 # vve:slope_zn/check_material调用
+# vve:plane/check_material调用
 
 scoreboard players operation grab_depth int = stemp_depth int
 scoreboard players operation material_response int = @s vve_material_type

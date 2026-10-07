@@ -1,5 +1,5 @@
 #vve:_init
-# 初始化vve3.0
+# 初始化vve3.1
 
 # 初始化模块控制
 function module_control:_init
@@ -18,6 +18,8 @@ scoreboard players set 408 int 408
 scoreboard players set 577 int 577
 scoreboard players set 2378 int 2378
 scoreboard players set 3363 int 3363
+scoreboard players set 1570796 int 1570796
+scoreboard players set 3141592 int 3141592
 scoreboard players set 314159265 int 314159265
 function vve:_consts
 
@@ -51,6 +53,7 @@ function vve:slope_xn/init
 function vve:slope_zp/init
 function vve:slope_zn/init
 function vve:ball_object/init
+function vve:plane/init
 
 # 初始化记录
 function vve:_version

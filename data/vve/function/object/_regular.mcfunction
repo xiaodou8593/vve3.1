@@ -47,5 +47,6 @@ scoreboard players operation cos int > sstemp_d6 int
 
 # 选择贴合面
 function vve:object/regular/branch_6
+function math:quat/_touvw
 
 function vve:object/_regular_angular

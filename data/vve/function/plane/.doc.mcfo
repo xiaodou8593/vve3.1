@@ -1,0 +1,24 @@
+#vve:plane/doc.mcfo
+
+# plane临时对象
+_this:{
+	coord_y:<y,int,1w>,
+	range:{
+		<x_min,int,1w>,
+		<z_min,int,1w>,
+		<x_max,int,1w>,
+		<z_max,int,1w>
+	},
+	chunk_range:{
+		<chunk_x_min,int>,
+		<chunk_z_min,int>,
+		<chunk_x_max,int>,
+		<chunk_z_max,int>
+	},
+	base_layer:<base_layer,int,1w>,
+	nvec:{
+		<nvec_x,int,1w>,
+		<nvec_y,int,1w>,
+		<nvec_z,int,1w>
+	}
+}

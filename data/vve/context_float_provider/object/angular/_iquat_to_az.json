@@ -1,0 +1,28 @@
+{
+	"type":"mul",
+	"inputs":[
+		{
+			"type":"from_int",
+			"input":{
+				"type":"score",
+				"target":{
+					"type":"fixed",
+					"name":"uvec_z"
+				},
+				"score":"int"
+			}
+		},
+		{
+			"type":"from_int",
+			"input":{
+				"type":"score",
+				"target":{
+					"type":"fixed",
+					"name":"angular_len"
+				},
+				"score":"int"
+			}
+		},
+		0.0001
+	]
+}

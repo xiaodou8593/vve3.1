@@ -1,0 +1,34 @@
+{
+	"type":"sqrt",
+	"input":{
+		"type":"sub",
+		"left":1E16,
+		"right":{
+			"type":"mul",
+			"inputs":[
+				{
+					"type":"from_int",
+					"input":{
+						"type":"score",
+						"target":{
+							"type":"fixed",
+							"name":"quat_high_w"
+						},
+						"score":"int"
+					}
+				},
+				{
+					"type":"from_int",
+					"input":{
+						"type":"score",
+						"target":{
+							"type":"fixed",
+							"name":"quat_high_w"
+						},
+						"score":"int"
+					}
+				}
+			]
+		}
+	}
+}
