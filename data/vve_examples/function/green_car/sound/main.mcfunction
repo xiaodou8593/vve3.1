@@ -6,6 +6,7 @@
 # 输入<friction_response,int>
 # 输入<impulse_response,int>
 # 输入impulse{...}
+# 输入<shift_cnt,int>
 # 传入世界实体为执行者
 
 scoreboard players operation temp_mod int = vve_sound_timer int
@@ -24,10 +25,12 @@ execute if score temp_mod int matches 3 \
 	if score input_w int matches 0 \
 	if score input_s int matches 0 \
 	if score temp_turn int matches 1 \
+	if score shift_cnt int matches 1.. \
 	run playsound vve:turn_0 player @a ~ ~ ~ 0.5 1.0
 execute if score temp_mod int matches 3 \
 	if score stemp_v int matches 2000.. \
 	if score input_s int matches 1 \
+	if score shift_cnt int matches 1.. \
 	run playsound vve:turn_0 player @a ~ ~ ~ 0.5 1.0
 
 scoreboard players operation temp_mod int = vve_sound_timer int
