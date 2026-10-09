@@ -14,11 +14,16 @@ scoreboard players operation stemp_psi int = target_psi int
 execute if score target_theta int matches -2147483648 run scoreboard players operation stemp_theta int = theta int
 execute if score target_phi int matches -2147483648 run scoreboard players operation stemp_phi int = phi int
 execute if score target_psi int matches -2147483648 run scoreboard players operation stemp_psi int = psi int
+tellraw @a "---"
+function math:euler/_print
+function vve:euler_control/_print
 
 scoreboard players operation stemp_div int = vve_euler_b int
 scoreboard players operation stemp_theta int -= theta int
 scoreboard players operation stemp_theta int %= 3600000 int
 execute if score stemp_theta int matches 1800000.. run scoreboard players remove stemp_theta int 3600000
+
+tellraw @a ["stemp_theta: ", {"score":{"name":"stemp_theta","objective":"int"}}]
 execute if score stemp_theta int matches -30000..30000 run scoreboard players set stemp_div int 6
 execute if score stemp_theta int matches -3000..3000 run scoreboard players add res int 1
 scoreboard players operation stemp_theta int /= stemp_div int
@@ -31,6 +36,7 @@ scoreboard players operation stemp_div int = vve_euler_b int
 scoreboard players operation stemp_phi int -= phi int
 scoreboard players operation stemp_phi int %= 3600000 int
 execute if score stemp_phi int matches 1800000.. run scoreboard players remove stemp_phi int 3600000
+tellraw @a ["stemp_phi: ", {"score":{"name":"stemp_phi","objective":"int"}}]
 execute if score stemp_phi int matches -30000..30000 run scoreboard players set stemp_div int 6
 execute if score stemp_phi int matches -3000..3000 run scoreboard players add res int 1
 scoreboard players operation stemp_phi int /= stemp_div int
@@ -43,6 +49,7 @@ scoreboard players operation stemp_div int = vve_euler_b int
 scoreboard players operation stemp_psi int -= psi int
 scoreboard players operation stemp_psi int %= 3600000 int
 execute if score stemp_psi int matches 1800000.. run scoreboard players remove stemp_psi int 3600000
+tellraw @a ["stemp_psi: ", {"score":{"name":"stemp_psi","objective":"int"}}]
 execute if score stemp_psi int matches -30000..30000 run scoreboard players set stemp_div int 6
 execute if score stemp_psi int matches -3000..3000 run scoreboard players add res int 1
 scoreboard players operation stemp_psi int /= stemp_div int
