@@ -24,7 +24,9 @@ data modify storage math:io sstemp_len set compute default float math:quat_high/
 execute store result score uvec_x int run compute default float math:quat_high/_scale_vec_x 0.0001
 execute store result score uvec_y int run compute default float math:quat_high/_scale_vec_y 0.0001
 execute store result score uvec_z int run compute default float math:quat_high/_scale_vec_z 0.0001
-
+scoreboard players operation uvec_x int *= sstemp_sign int
+scoreboard players operation uvec_y int *= sstemp_sign int
+scoreboard players operation uvec_z int *= sstemp_sign int
 
 # 计算角速度矢量
 execute store result score angular_x int run compute default float vve:object/angular/_iquat_to_ax
