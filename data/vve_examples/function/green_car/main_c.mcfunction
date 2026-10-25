@@ -1,4 +1,4 @@
-#vve_examples:green_car/main
+#vve_examples:green_car/main_c
 # vve_examples:green_car/tick调用
 # 实体对象主程序
 

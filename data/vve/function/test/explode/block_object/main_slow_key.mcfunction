@@ -1,4 +1,4 @@
-#vve:test/explode/block_object/main_slow_mov
+#vve:test/explode/block_object/main_slow_key
 # 实体对象慢倍速主程序
 # 输入<inv_dt,int>
 

@@ -1,4 +1,4 @@
-#vve_examples:test_boat/main
+#vve_examples:test_boat/main_c
 # vve_examples:test_boat/tick调用
 # 实体对象主程序
 

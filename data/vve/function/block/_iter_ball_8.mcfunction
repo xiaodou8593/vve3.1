@@ -1,4 +1,4 @@
-#vve:object/_iter_ball_8
+#vve:block/_iter_ball_8
 # 球体介质探测算法
 # 需要传入世界实体为执行者
 

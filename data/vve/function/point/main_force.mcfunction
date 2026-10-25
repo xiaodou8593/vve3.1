@@ -1,4 +1,4 @@
-#vve:point/main_slow_force
+#vve:point/main_force
 # 实体对象力学迭代
 
 function vve:point/_get

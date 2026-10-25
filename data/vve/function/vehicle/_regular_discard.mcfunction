@@ -1,4 +1,4 @@
-#vve:vehicle/_regular
+#vve:vehicle/_regular_discard
 # 规整化姿态，消除法向角速度
 # 输入nvec{...}
 # 输入storage vve:io result

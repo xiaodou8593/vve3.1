@@ -1,4 +1,4 @@
-#vve:test/explode/start_low
+#vve:test/explode/start_very_low
 
 # 测试场地
 execute as @e[tag=math_marker,limit=1] run function vve:test_coord/_topos

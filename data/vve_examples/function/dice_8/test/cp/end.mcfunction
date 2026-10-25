@@ -1,2 +1,2 @@
-#vve_examples:dice_4/test/cp/end
+#vve_examples:dice_8/test/cp/end
 
