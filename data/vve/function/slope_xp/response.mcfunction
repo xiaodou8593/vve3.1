@@ -11,18 +11,17 @@ scoreboard players set surface_response int 1
 scoreboard players set grab_layer_response int 1
 
 # 位移至特定深度
+scoreboard players operation nvec_x int = @s nvec_x
+scoreboard players operation nvec_y int = @s nvec_y
+scoreboard players operation nvec_z int = @s nvec_z
+scoreboard players operation grab_depth int *= nvec_y int
+scoreboard players operation grab_depth int /= 10000 int
 scoreboard players set shift_response int 1
 scoreboard players set shift_x int 0
 scoreboard players set shift_z int 0
 scoreboard players operation shift_y int = nvec_y int
 scoreboard players operation shift_y int *= grab_depth int
 scoreboard players operation shift_y int /= 10000 int
-
-scoreboard players operation nvec_x int = @s nvec_x
-scoreboard players operation nvec_y int = @s nvec_y
-scoreboard players operation nvec_z int = @s nvec_z
-scoreboard players operation grab_depth int *= nvec_y int
-scoreboard players operation grab_depth int /= 10000 int
 
 # 计算沿法线反方向的速度
 execute store result score stemp_v int run compute default float vve:object/_calc_stemp_v -10000
