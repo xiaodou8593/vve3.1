@@ -1,7 +1,6 @@
 #vve:object/_regular_angular
-# 消除法向角速度
+# 仅保留法向角速度
 # 输入nvec{...}
-# 输入receiver{...}
 # 需要传入世界实体为执行者
 
 execute store result score inp int run compute default float vve:object/_angular_dot_nvec 10000
